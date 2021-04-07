@@ -8,7 +8,7 @@ class Mix extends StatelessWidget {
       this.cover3URL,
       this.cover4URL});
 
-  String mixName, cover1URL, cover2URL, cover3URL, cover4URL;
+  final String mixName, cover1URL, cover2URL, cover3URL, cover4URL;
 
   @override
   Widget build(BuildContext context) {

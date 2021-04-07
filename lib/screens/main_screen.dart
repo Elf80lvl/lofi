@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lofi/constants.dart';
+import 'package:lofi/screens/account/account.dart';
 import 'package:lofi/screens/home/home.dart';
 import 'package:lofi/screens/library/library.dart';
+import 'package:lofi/screens/messages/messages.dart';
+import 'package:lofi/screens/search/search.dart';
 
-class HomeScreen extends StatefulWidget {
+class MainScreen extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _MainScreenState createState() => _MainScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
   List<Widget> _widgetOptions = [
     Home(),
     Library(),
+    Account(),
+    Messages(),
+    Search(),
   ];
 
   void onTappedBar(int index) {
     setState(() {
       _currentIndex = index;
-      print(_currentIndex);
     });
   }
 
@@ -27,28 +32,40 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: kBgColor,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         onTap: onTappedBar,
         currentIndex: _currentIndex,
         selectedItemColor: Colors.white,
         items: [
           BottomNavigationBarItem(
-              icon: SvgPicture.asset('assets/icons/Home.svg'),
-              label: 'Home',
-              backgroundColor: kBgColor),
+            icon: SvgPicture.asset(
+              'assets/icons/Home.svg',
+              //color: Colors.white,
+            ),
+            activeIcon: SvgPicture.asset('assets/icons/HomeActive.svg'),
+            label: 'Home',
+          ),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset('assets/icons/library.svg'),
-              label: 'Library',
-              backgroundColor: kBgColor),
+            icon: SvgPicture.asset('assets/icons/library.svg'),
+            activeIcon: SvgPicture.asset('assets/icons/libraryActive.svg'),
+            label: 'Library',
+          ),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset('assets/icons/account.svg'),
-              label: 'Account',
-              backgroundColor: kBgColor),
+            icon: SvgPicture.asset('assets/icons/account.svg'),
+            activeIcon: SvgPicture.asset('assets/icons/accountActive.svg'),
+            label: 'Account',
+          ),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset('assets/icons/messages.svg'),
-              label: 'Messages',
-              backgroundColor: kBgColor),
+            icon: SvgPicture.asset('assets/icons/messages.svg'),
+            activeIcon: SvgPicture.asset('assets/icons/messagesActive.svg'),
+            label: 'Messages',
+          ),
           BottomNavigationBarItem(
               icon: SvgPicture.asset('assets/icons/Search.svg'),
+              activeIcon: SvgPicture.asset('assets/icons/SearchActive.svg'),
               label: 'Search'),
         ],
       ),
