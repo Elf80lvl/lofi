@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lofi/constants.dart';
-import 'package:lofi/screens/home_screen.dart';
+import 'screens/main_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +14,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'LoFi',
       //darkTheme: ThemeData.dark(),
-      theme: ThemeData.dark(),
+      theme: ThemeData.dark().copyWith(
+        backgroundColor: kBgColor,
+        bottomAppBarColor: kBgColor,
+        scaffoldBackgroundColor: kBgColor,
+      ),
       home: HomeScreen(),
     );
   }
