@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lofi/badge_icon.dart';
 import 'package:lofi/constants.dart';
 import 'package:lofi/screens/account/account.dart';
 import 'package:lofi/screens/home/home.dart';
@@ -28,9 +31,15 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
+  StreamController<int> _countController = StreamController<int>();
+
+  int _tabBarCount = 24;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset:
+          false, //TODO чтобы не было ошибки overflow при появлении клавиатуры на экране Library, надо найти решение лучше
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: kBgColor,
@@ -43,7 +52,6 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/icons/Home.svg',
-              //color: Colors.white,
             ),
             activeIcon: SvgPicture.asset('assets/icons/HomeActive.svg'),
             label: 'Home',
@@ -59,7 +67,33 @@ class _MainScreenState extends State<MainScreen> {
             label: 'Account',
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/icons/messages.svg'),
+            icon: Stack(
+              children: [
+                SvgPicture.asset('assets/icons/messages.svg'),
+                Positioned(
+                  right: 0,
+                  child: Container(
+                    padding: EdgeInsets.all(1),
+                    decoration: new BoxDecoration(
+                      color: kThemeColor,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 5, vertical: 2),
+                      child: Text(
+                        _tabBarCount.toString(),
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
             activeIcon: SvgPicture.asset('assets/icons/messagesActive.svg'),
             label: 'Messages',
           ),
@@ -73,4 +107,23 @@ class _MainScreenState extends State<MainScreen> {
       body: _widgetOptions.elementAt(_currentIndex),
     );
   }
+
+  @override
+  void dispose() {
+    _countController.close();
+    super.dispose();
+  }
 }
+
+//SvgPicture.asset('assets/icons/messages.svg')
+
+
+
+            // StreamBuilder(
+            //   initialData: _tabBarCount,
+            //   stream: _countController.stream,
+            //   builder: (_, snapshot) => BadgeIcon(
+            //     icon: SvgPicture.asset('assets/icons/messages.svg'),
+            //     badgeCount: snapshot.data,
+            //   ),
+            // ),
