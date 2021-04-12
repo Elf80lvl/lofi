@@ -21,76 +21,125 @@ class Messages extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 25,
+          height: 10,
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          child: Container(
-            child: Row(
-              children: [
-                CircleAvatar(
-                  radius: 30,
-                  backgroundColor: kBottomMenuBG,
-                  child: CircleAvatar(
-                    radius: 27,
-                    backgroundImage:
-                        AssetImage('assets/image/chatAvatars/till.jpg'),
-                  ),
-                ),
-                SizedBox(
-                  width: 11,
-                ),
-                //TODO: должен занимать все свободное пространство и двигать бэдж и время
-                Flexible(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Till',
-                        style: TextStyle(fontSize: 20, color: kMainWhite),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'Did you like the latest album?mmmmmmmm',
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: TextStyle(
-                            color: kSecondaryColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ],
-                  ),
-                ),
-                //Spacer(),
-                Badge(
-                  //shape: BadgeShape.square,
-                  toAnimate: false,
-                  badgeColor: kThemeColor,
-                  padding: EdgeInsets.all(8),
-
-                  borderRadius: BorderRadius.circular(50),
-                  badgeContent: Text('4',
-                      style: TextStyle(
-                          color: kMainWhite,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12)),
-                ),
-                SizedBox(
-                  width: 14,
-                ),
-                Text(
-                  '14:16',
-                  style: TextStyle(
-                      color: kSecondaryColor, fontWeight: FontWeight.w500),
-                ),
-              ],
-            ),
-          ),
+        ChatRow(
+          imgURL: 'assets/image/chatAvatars/till.jpg',
+          name: 'Till',
+          msgPreview: 'Did you like the latest album?mmmmmmmm',
+          msgCount: 4,
+          time: '14:16',
+        ),
+        ChatRow(
+          imgURL: 'assets/image/chatAvatars/matt.jpg',
+          name: 'Matt Wellamy',
+          msgPreview: 'I like the vibes!',
+          msgCount: 11,
+          time: '10:11',
         ),
       ],
     );
   }
 }
+
+class ChatRow extends StatelessWidget {
+  ChatRow({this.imgURL, this.name, this.msgPreview, this.msgCount, this.time});
+
+  final String imgURL, name, msgPreview, time;
+  final int msgCount;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Row(
+          children: [
+            CircleAvatar(
+              radius: 30,
+              backgroundColor: kBottomMenuBG,
+              child: CircleAvatar(
+                radius: 27,
+                backgroundImage: AssetImage(imgURL),
+              ),
+            ),
+            SizedBox(
+              width: 11,
+            ),
+            Flexible(
+              flex: 2,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    style: TextStyle(fontSize: 20, color: kMainWhite),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    msgPreview,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: TextStyle(
+                        color: kSecondaryColor,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ],
+              ),
+            ),
+            //Spacer(),
+            Badge(
+              shape: BadgeShape.square,
+              toAnimate: false,
+              badgeColor: kThemeColor,
+              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+              borderRadius: BorderRadius.circular(50),
+              badgeContent: Text('$msgCount',
+                  style: TextStyle(
+                      color: kMainWhite,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12)),
+            ),
+            SizedBox(
+              width: 14,
+            ),
+            Text(
+              time,
+              style: TextStyle(
+                  color: kSecondaryColor, fontWeight: FontWeight.w500),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+              // Flexible(
+              //   child: Column(
+              //     crossAxisAlignment: CrossAxisAlignment.start,
+              //     children: [
+              //       Text(
+              //         'Till',
+              //         style: TextStyle(fontSize: 20, color: kMainWhite),
+              //       ),
+              //       SizedBox(
+              //         height: 5,
+              //       ),
+              //       Text(
+              //         'Did you like the latest album?mmmmmmmm',
+              //         overflow: TextOverflow.ellipsis,
+              //         maxLines: 1,
+              //         style: TextStyle(
+              //             color: kSecondaryColor,
+              //             fontSize: 15,
+              //             fontWeight: FontWeight.w500),
+              //       ),
+              //     ],
+              //   ),
+              // ),

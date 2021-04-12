@@ -59,50 +59,62 @@ class Search extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 26),
-                  child: Row(
-                    children: [
-                      Container(
-                        child: ClipRRect(
-                          borderRadius:
-                              BorderRadius.circular(kBorderRadiusDefault),
-                          child: Image.asset(
-                            'assets/image/woodkid.jpg',
-                            height: 48,
-                            width: 48,
-                            fit: BoxFit.cover,
-                          ),
+                  child: InkWell(
+                    onTap: () {
+                      print('song was tapped');
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          //картинка и надписи
+                          children: [
+                            Container(
+                              child: ClipRRect(
+                                borderRadius:
+                                    BorderRadius.circular(kBorderRadiusDefault),
+                                child: Image.asset(
+                                  'assets/image/woodkid.jpg',
+                                  height: 48,
+                                  width: 48,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Iron',
+                                  style: TextStyle(
+                                      color: kMainWhite,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                SizedBox(
+                                  height: 4,
+                                ),
+                                Text(
+                                  'Woodkid',
+                                  style: TextStyle(
+                                      color: kSecondaryColor,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Iron',
-                            style: TextStyle(
-                                color: kMainWhite,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          SizedBox(
-                            height: 4,
-                          ),
-                          Text(
-                            'Woodkid',
-                            style: TextStyle(
-                                color: kSecondaryColor,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                      Spacer(),
-                      IconButton(
-                          icon: SvgPicture.asset('assets/icons/more.svg'),
-                          onPressed: () {}),
-                    ],
+                        IconButton(
+                            icon: SvgPicture.asset('assets/icons/more.svg'),
+                            onPressed: () {
+                              print('more button was tapped');
+                            }),
+                      ],
+                    ),
                   ),
                 ),
               ],

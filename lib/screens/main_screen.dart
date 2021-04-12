@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lofi/badge_icon.dart';
 import 'package:lofi/constants.dart';
 import 'package:lofi/screens/account/account.dart';
 import 'package:lofi/screens/home/home.dart';
@@ -33,8 +32,6 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   StreamController<int> _countController = StreamController<int>();
-
-  int _tabBarCount = 24;
 
   @override
   Widget build(BuildContext context) {
@@ -89,23 +86,4 @@ class _MainScreenState extends State<MainScreen> {
       body: _widgetOptions.elementAt(_currentIndex),
     );
   }
-
-  @override
-  void dispose() {
-    _countController.close();
-    super.dispose();
-  }
 }
-
-//SvgPicture.asset('assets/icons/messages.svg')
-
-
-
-            // StreamBuilder(
-            //   initialData: _tabBarCount,
-            //   stream: _countController.stream,
-            //   builder: (_, snapshot) => BadgeIcon(
-            //     icon: SvgPicture.asset('assets/icons/messages.svg'),
-            //     badgeCount: snapshot.data,
-            //   ),
-            // ),
