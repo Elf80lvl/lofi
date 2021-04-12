@@ -20,3 +20,5 @@ var kTextFieldInputDecoration = InputDecoration(
     borderSide: BorderSide.none,
   ),
 );
+
+const kBorderRadiusDefault = 10.0;

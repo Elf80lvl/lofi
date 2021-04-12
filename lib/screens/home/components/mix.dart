@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lofi/constants.dart';
 
 class Mix extends StatelessWidget {
   Mix(
@@ -20,7 +21,8 @@ class Mix extends StatelessWidget {
           Row(
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(10)),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(kBorderRadiusDefault)),
                 child: Image.asset(
                   cover1URL,
                   height: 75,
@@ -29,7 +31,8 @@ class Mix extends StatelessWidget {
                 ),
               ),
               ClipRRect(
-                borderRadius: BorderRadius.only(topRight: Radius.circular(10)),
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(kBorderRadiusDefault)),
                 child: Image.asset(
                   cover2URL,
                   height: 75,
@@ -42,8 +45,8 @@ class Mix extends StatelessWidget {
           Row(
             children: [
               ClipRRect(
-                borderRadius:
-                    BorderRadius.only(bottomLeft: Radius.circular(10)),
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(kBorderRadiusDefault)),
                 child: Image.asset(
                   cover3URL,
                   height: 75,
@@ -52,8 +55,8 @@ class Mix extends StatelessWidget {
                 ),
               ),
               ClipRRect(
-                borderRadius:
-                    BorderRadius.only(bottomRight: Radius.circular(10)),
+                borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(kBorderRadiusDefault)),
                 child: Image.asset(
                   cover4URL,
                   height: 75,

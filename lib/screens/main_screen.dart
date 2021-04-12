@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lofi/badge_icon.dart';
@@ -67,32 +68,13 @@ class _MainScreenState extends State<MainScreen> {
             label: 'Account',
           ),
           BottomNavigationBarItem(
-            icon: Stack(
-              children: [
-                SvgPicture.asset('assets/icons/messages.svg'),
-                Positioned(
-                  right: 0,
-                  child: Container(
-                    padding: EdgeInsets.all(1),
-                    decoration: new BoxDecoration(
-                      color: kThemeColor,
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 5, vertical: 2),
-                      child: Text(
-                        _tabBarCount.toString(),
-                        style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+            icon: Badge(
+              badgeContent: Text(
+                '24',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              badgeColor: kThemeColor,
+              child: SvgPicture.asset('assets/icons/messages.svg'),
             ),
             activeIcon: SvgPicture.asset('assets/icons/messagesActive.svg'),
             label: 'Messages',
