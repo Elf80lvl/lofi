@@ -44,6 +44,7 @@ class Messages extends StatelessWidget {
                 msgPreview: 'Summertime finally!',
                 msgCount: 9,
                 time: '9:23',
+                isOnline: true,
               ),
               ChatRow(
                 imgURL: 'assets/image/chatAvatars/tom.jpg',
@@ -61,16 +62,16 @@ class Messages extends StatelessWidget {
                 time: '6:55',
               ),
               ChatRow(
-                imgURL: 'assets/image/chatAvatars/tobias.jpg',
-                name: 'Tobias Mold',
-                msgPreview: 'Trying my best!',
+                name: 'Tilo Fox',
+                imgURL: 'assets/image/chatAvatars/tilo.jpg',
+                msgPreview: 'In the dark',
                 //msgCount: 9,
                 time: '6:55',
               ),
               ChatRow(
-                imgURL: 'assets/image/chatAvatars/tobias.jpg',
-                name: 'Tobias Mold',
-                msgPreview: 'Trying my best!',
+                name: 'Elena Tonro',
+                imgURL: 'assets/image/chatAvatars/elena.jpg',
+                msgPreview: 'Doing the right thing',
                 //msgCount: 9,
                 time: '6:55',
               ),
@@ -117,12 +118,15 @@ class ChatRow extends StatelessWidget {
                           backgroundColor: kBottomMenuBG,
                           child: CircleAvatar(
                             radius: 27,
-                            backgroundImage: AssetImage(imgURL),
+                            backgroundImage: (imgURL != null)
+                                ? AssetImage(imgURL)
+                                : AssetImage('assets/image/noAva.jpg'),
                           ),
                         ),
                         Positioned(
+                          //Online indicator
                           right: 3,
-                          top: 3,
+                          top: 4,
                           child: Container(
                             width: 12,
                             height: 12,
@@ -169,6 +173,7 @@ class ChatRow extends StatelessWidget {
                 children: [
                   Badge(
                     showBadge: (msgCount != null) ? true : false,
+                    elevation: 0,
                     shape: BadgeShape.square,
                     toAnimate: false,
                     badgeColor: kThemeColor,

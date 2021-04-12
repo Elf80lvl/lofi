@@ -32,13 +32,18 @@ class Account extends StatelessWidget {
                   'cathlynsmith@gmail.com',
                   style: TextStyle(fontSize: 12, color: kSecondaryColor),
                 ),
-                TextButton(onPressed: () {}, child: Text('See stats')),
+                TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'See stats',
+                      style: TextStyle(color: kThemeColor, fontSize: 12),
+                    )),
               ],
             ),
           ),
           //элементы меню
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 42),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
             child: Column(
               children: [
                 MenuElementAccount(

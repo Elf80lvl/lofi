@@ -31,8 +31,6 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
-  StreamController<int> _countController = StreamController<int>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,7 +71,14 @@ class _MainScreenState extends State<MainScreen> {
               badgeColor: kThemeColor,
               child: SvgPicture.asset('assets/icons/messages.svg'),
             ),
-            activeIcon: SvgPicture.asset('assets/icons/messagesActive.svg'),
+            activeIcon: Badge(
+              badgeContent: Text(
+                '24',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              badgeColor: kThemeColor,
+              child: SvgPicture.asset('assets/icons/messagesActive.svg'),
+            ),
             label: 'Messages',
           ),
           BottomNavigationBarItem(

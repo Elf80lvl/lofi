@@ -19,11 +19,8 @@ class Library extends StatelessWidget {
             onChanged: (value) {},
           ),
         ),
-        SizedBox(
-          height: 38,
-        ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
           child: Column(
             children: [
               MenuElementWithIcon(

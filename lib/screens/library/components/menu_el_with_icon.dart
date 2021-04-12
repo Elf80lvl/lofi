@@ -11,10 +11,10 @@ class MenuElementWithIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 42),
-      child: InkWell(
-        onTap: onTap,
+    return InkWell(
+      onTap: () {},
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20),
         child: Row(
           children: [
             SvgPicture.asset(iconURL),
