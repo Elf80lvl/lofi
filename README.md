@@ -1,3 +1,3 @@
 # lofi
 
-![alt text](assets/images/screenshot.png)
+![alt text](assets/image/screenshot.png)
