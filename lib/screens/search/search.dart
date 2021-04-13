@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lofi/constants.dart';
@@ -23,6 +25,7 @@ class Search extends StatelessWidget {
         ),
         Expanded(
           child: ListView(
+            physics: Platform.isIOS ? BouncingScrollPhysics() : ScrollPhysics(),
             children: [
               SizedBox(
                 height: 32,

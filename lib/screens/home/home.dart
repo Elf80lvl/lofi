@@ -2,22 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:lofi/screens/home/components/album.dart';
 import 'package:lofi/screens/home/components/mix.dart';
 import 'package:lofi/screens/home/components/top_music_tag.dart';
+import 'dart:io';
 
 class Home extends StatelessWidget {
-  const Home({
-    Key key,
-  }) : super(key: key);
+  // const Home({
+  //   Key key,
+  // }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: SingleChildScrollView(
+        physics: Platform.isIOS ? BouncingScrollPhysics() : ScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SingleChildScrollView(
+                physics:
+                    Platform.isIOS ? BouncingScrollPhysics() : ScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   //scrollDirection: Axis.horizontal,
@@ -38,6 +42,8 @@ class Home extends StatelessWidget {
               ),
               SizedBox(height: 23),
               SingleChildScrollView(
+                physics:
+                    Platform.isIOS ? BouncingScrollPhysics() : ScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
@@ -66,6 +72,8 @@ class Home extends StatelessWidget {
               ),
               SizedBox(height: 23),
               SingleChildScrollView(
+                physics:
+                    Platform.isIOS ? BouncingScrollPhysics() : ScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [

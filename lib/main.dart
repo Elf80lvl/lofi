@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'LoFi',
       //darkTheme: ThemeData.dark(),
       theme: ThemeData.dark().copyWith(
+        accentColor: Colors.transparent,
         backgroundColor: kBgColor,
         bottomAppBarColor: kBgColor,
         scaffoldBackgroundColor: kBgColor,

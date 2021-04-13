@@ -1,6 +1,10 @@
+import 'dart:io'; //для определения ОС устройства (Platform.isIos)
+
 import 'package:flutter/material.dart';
 import 'package:lofi/constants.dart';
 import 'package:badges/badges.dart';
+import 'package:lofi/screens/messages/msgData.dart';
+import 'msgData.dart';
 
 class Messages extends StatelessWidget {
   @override
@@ -21,61 +25,18 @@ class Messages extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: ListView(
-            children: [
-              ChatRow(
-                imgURL: 'assets/image/chatAvatars/till.jpg',
-                name: 'Till',
-                msgPreview: 'Did you like the latest album?mmmmmmmm',
-                msgCount: 4,
-                time: '14:16',
-                //isOnline: true,
-              ),
-              ChatRow(
-                imgURL: 'assets/image/chatAvatars/matt.jpg',
-                name: 'Matt Wellamy',
-                msgPreview: 'I like the vibes!',
-                msgCount: 11,
-                time: '10:11',
-              ),
-              ChatRow(
-                imgURL: 'assets/image/chatAvatars/lana.jpg',
-                name: 'Lana Del Ring',
-                msgPreview: 'Summertime finally!',
-                msgCount: 9,
-                time: '9:23',
-                isOnline: true,
-              ),
-              ChatRow(
-                imgURL: 'assets/image/chatAvatars/tom.jpg',
-                name: 'Tom Angeles',
-                msgPreview: 'This gonna be a hit',
-                //msgCount: 9,
-                time: '7:00',
-                isOnline: true,
-              ),
-              ChatRow(
-                imgURL: 'assets/image/chatAvatars/tobias.jpg',
-                name: 'Tobias Mold',
-                msgPreview: 'Trying my best!',
-                //msgCount: 9,
-                time: '6:55',
-              ),
-              ChatRow(
-                name: 'Tilo Fox',
-                imgURL: 'assets/image/chatAvatars/tilo.jpg',
-                msgPreview: 'In the dark',
-                //msgCount: 9,
-                time: '6:55',
-              ),
-              ChatRow(
-                name: 'Elena Tonro',
-                imgURL: 'assets/image/chatAvatars/elena.jpg',
-                msgPreview: 'Doing the right thing',
-                //msgCount: 9,
-                time: '6:55',
-              ),
-            ],
+          // * data - массив с данными списка чата из msgData.dart
+          child: ListView.builder(
+            physics: Platform.isIOS ? BouncingScrollPhysics() : ScrollPhysics(),
+            itemCount: data.length,
+            itemBuilder: (_, index) => ChatRow(
+              imgURL: data[index].imgURL,
+              name: data[index].name,
+              msgPreview: data[index].msgPreview,
+              msgCount: data[index].msgCount,
+              time: data[index].time,
+              isOnline: data[index].isOnline,
+            ),
           ),
         ),
       ],
@@ -83,6 +44,7 @@ class Messages extends StatelessWidget {
   }
 }
 
+// * Строка юзера чата с картинкой, именем, превью сообщения, количеством непрочитанных сообщений и временем
 class ChatRow extends StatelessWidget {
   ChatRow(
       {this.imgURL,
@@ -124,7 +86,7 @@ class ChatRow extends StatelessWidget {
                           ),
                         ),
                         Positioned(
-                          //Online indicator
+                          // * Online indicator
                           right: 3,
                           top: 4,
                           child: Container(
@@ -149,10 +111,13 @@ class ChatRow extends StatelessWidget {
                         children: [
                           Text(
                             name,
-                            style: TextStyle(fontSize: 20, color: kMainWhite),
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: kMainWhite,
+                                fontWeight: FontWeight.w500),
                           ),
                           SizedBox(
-                            height: 5,
+                            height: 3,
                           ),
                           Text(
                             msgPreview,
@@ -207,26 +172,64 @@ class ChatRow extends StatelessWidget {
 }
 
 
-              // Flexible(
-              //   child: Column(
-              //     crossAxisAlignment: CrossAxisAlignment.start,
-              //     children: [
-              //       Text(
-              //         'Till',
-              //         style: TextStyle(fontSize: 20, color: kMainWhite),
-              //       ),
-              //       SizedBox(
-              //         height: 5,
-              //       ),
-              //       Text(
-              //         'Did you like the latest album?mmmmmmmm',
-              //         overflow: TextOverflow.ellipsis,
-              //         maxLines: 1,
-              //         style: TextStyle(
-              //             color: kSecondaryColor,
-              //             fontSize: 15,
-              //             fontWeight: FontWeight.w500),
-              //       ),
-              //     ],
-              //   ),
-              // ),
+
+
+// Expanded(
+//           child: ListView(
+//             physics: Platform.isIOS ? BouncingScrollPhysics() : ScrollPhysics(),
+//             children: [
+//               ChatRow(
+//                 imgURL: 'assets/image/chatAvatars/till.jpg',
+//                 name: 'Till',
+//                 msgPreview: 'Did you like the latest album?mmmmmmmm',
+//                 msgCount: 4,
+//                 time: '14:16',
+//                 //isOnline: true,
+//               ),
+//               ChatRow(
+//                 imgURL: 'assets/image/chatAvatars/matt.jpg',
+//                 name: 'Matt Wellamy',
+//                 msgPreview: 'I like the vibes!',
+//                 msgCount: 11,
+//                 time: '10:11',
+//               ),
+//               ChatRow(
+//                 imgURL: 'assets/image/chatAvatars/lana.jpg',
+//                 name: 'Lana Del Ring',
+//                 msgPreview: 'Summertime finally!',
+//                 msgCount: 9,
+//                 time: '9:23',
+//                 isOnline: true,
+//               ),
+//               ChatRow(
+//                 imgURL: 'assets/image/chatAvatars/tom.jpg',
+//                 name: 'Tom Angeles',
+//                 msgPreview: 'This gonna be a hit',
+//                 //msgCount: 9,
+//                 time: '7:00',
+//                 isOnline: true,
+//               ),
+//               ChatRow(
+//                 imgURL: 'assets/image/chatAvatars/tobias.jpg',
+//                 name: 'Tobias Mold',
+//                 msgPreview: 'Trying my best!',
+//                 //msgCount: 9,
+//                 time: '6:55',
+//               ),
+//               ChatRow(
+//                 name: 'Tilo Fox',
+//                 imgURL: 'assets/image/chatAvatars/tilo.jpg',
+//                 msgPreview: 'In the dark',
+//                 //msgCount: 9,
+//                 time: '6:55',
+//               ),
+//               ChatRow(
+//                 name: 'Elena Tonro',
+//                 imgURL: 'assets/image/chatAvatars/elena.jpg',
+//                 msgPreview: 'Doing the right thing',
+//                 //msgCount: 9,
+//                 time: '6:55',
+//               ),
+//             ],
+//           ),
+//         ),
