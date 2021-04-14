@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lofi/constants.dart';
+import 'package:lofi/screens/search/components/song_searched.dart';
+import 'package:lofi/screens/search/components/tag.dart';
 
 class Search extends StatelessWidget {
   @override
@@ -11,6 +13,7 @@ class Search extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Container(
+          // * блок с поиском
           padding: EdgeInsets.only(top: 50, left: 16),
           width: double.infinity,
           color: kBottomMenuBG,
@@ -31,6 +34,7 @@ class Search extends StatelessWidget {
                 height: 32,
               ),
               GestureDetector(
+                // * 'what's playing' button
                 onTap: () {
                   print('whats playing was tapped');
                 },
@@ -64,74 +68,24 @@ class Search extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 26),
-                      child: InkWell(
-                        onTap: () {
-                          print('song was tapped');
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              //картинка и надписи
-                              children: [
-                                Container(
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(
-                                        kBorderRadiusDefault),
-                                    child: Image.asset(
-                                      'assets/image/woodkid.jpg',
-                                      height: 48,
-                                      width: 48,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Iron',
-                                      style: TextStyle(
-                                          color: kMainWhite,
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    SizedBox(
-                                      height: 4,
-                                    ),
-                                    Text(
-                                      'Woodkid',
-                                      style: TextStyle(
-                                          color: kSecondaryColor,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            IconButton(
-                                icon: SvgPicture.asset('assets/icons/more.svg'),
-                                onPressed: () {
-                                  print('more button was tapped');
-                                }),
-                          ],
-                        ),
-                      ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    SongSearched(
+                      imgURL: 'assets/image/woodkid.jpg',
+                      title: 'Iron',
+                      subtitle: 'Woodkid',
+                    ),
+                    SongSearched(
+                      imgURL: 'assets/image/medicine.jpg',
+                      title: 'Medicine',
+                      subtitle: 'Daughter',
                     ),
                   ],
                 ),
               ),
-              SizedBox(
-                height: 21,
-              ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 24),
                 child: Wrap(
                   spacing: 16,
                   runSpacing: 16,
@@ -157,28 +111,6 @@ class Search extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class Tag extends StatelessWidget {
-  Tag(this.text);
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        print('tag tapped');
-      },
-      child: Chip(
-          padding: EdgeInsets.all(10),
-          backgroundColor: kBottomMenuBG,
-          label: Text(
-            '#$text',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-          )),
     );
   }
 }

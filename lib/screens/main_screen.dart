@@ -23,7 +23,6 @@ class _MainScreenState extends State<MainScreen> {
     Search(),
   ];
 
-//TODO сделать переключение окон через меню с сохранением состояния окон
   void onTappedBar(int index) {
     setState(() {
       _currentIndex = index;
@@ -87,7 +86,11 @@ class _MainScreenState extends State<MainScreen> {
         ],
       ),
       backgroundColor: Color(0xff1D2027),
-      body: _widgetOptions.elementAt(_currentIndex),
+      body: IndexedStack(
+        //этот виджет позволяет сохранить state страниц
+        index: _currentIndex,
+        children: _widgetOptions,
+      ),
     );
   }
 }
