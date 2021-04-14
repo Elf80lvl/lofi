@@ -78,7 +78,7 @@ class Home extends StatelessWidget {
                 child: Row(
                   children: [
                     Mix(
-                      mixName: 'Sythwave',
+                      mixName: 'Synthwave',
                       cover1URL: 'assets/image/synth.jpg',
                       cover2URL: 'assets/image/synth2.jpg',
                       cover3URL: 'assets/image/synth3.jpg',

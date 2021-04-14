@@ -20,7 +20,7 @@ List<MsgData> data = [
     name: 'Till',
     msgPreview: 'Did you like the latest album?mmmmmmmm',
     msgCount: 4,
-    time: '14:16',
+    time: '12:02',
     isOnline: false,
   ),
   MsgData(
@@ -62,6 +62,6 @@ List<MsgData> data = [
     name: 'Elena Tonro',
     imgURL: 'assets/image/chatAvatars/elena.jpg',
     msgPreview: 'Doing the right thing',
-    time: '4:55',
+    time: '12 Jun',
   ),
 ];

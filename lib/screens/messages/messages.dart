@@ -1,4 +1,4 @@
-import 'dart:io'; //для определения ОС устройства (Platform.isIos)
+import 'dart:io' show Platform; //для определения ОС устройства (Platform.isIos)
 
 import 'package:flutter/material.dart';
 import 'package:lofi/constants.dart';
@@ -29,13 +29,18 @@ class Messages extends StatelessWidget {
           child: ListView.builder(
             physics: Platform.isIOS ? BouncingScrollPhysics() : ScrollPhysics(),
             itemCount: data.length,
-            itemBuilder: (_, index) => ChatRow(
-              imgURL: data[index].imgURL,
-              name: data[index].name,
-              msgPreview: data[index].msgPreview,
-              msgCount: data[index].msgCount,
-              time: data[index].time,
-              isOnline: data[index].isOnline,
+            itemBuilder: (_, index) => InkWell(
+              onTap: () {
+                print('${data[index].name} was tapped');
+              },
+              child: ChatRow(
+                imgURL: data[index].imgURL,
+                name: data[index].name,
+                msgPreview: data[index].msgPreview,
+                msgCount: data[index].msgCount,
+                time: data[index].time,
+                isOnline: data[index].isOnline,
+              ),
             ),
           ),
         ),
@@ -44,7 +49,8 @@ class Messages extends StatelessWidget {
   }
 }
 
-// * Строка юзера чата с картинкой, именем, превью сообщения, количеством непрочитанных сообщений и временем
+// * Строка юзера чата с картинкой, именем, превью сообщения, количеством непрочитанных сообщений, временем и сосятояние онлайн
+
 class ChatRow extends StatelessWidget {
   ChatRow(
       {this.imgURL,
@@ -60,111 +66,108 @@ class ChatRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        print('chat row tapped');
-      },
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
-          child: Row(
-            children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    Stack(
-                      children: [
-                        CircleAvatar(
-                          radius: 30,
-                          backgroundColor: kBottomMenuBG,
-                          child: CircleAvatar(
-                            radius: 27,
-                            backgroundImage: (imgURL != null)
-                                ? AssetImage(imgURL)
-                                : AssetImage('assets/image/noAva.jpg'),
-                          ),
-                        ),
-                        Positioned(
-                          // * Online indicator
-                          right: 3,
-                          top: 4,
-                          child: Container(
-                            width: 12,
-                            height: 12,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: (isOnline == true)
-                                  ? Color(0xFF5DD27E)
-                                  : Colors.transparent,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 11,
-                    ),
-                    Flexible(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            name,
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: kMainWhite,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          Text(
-                            msgPreview,
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            style: TextStyle(
-                                color: kSecondaryColor,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Row(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Row(
+          children: [
+            Expanded(
+              child: Row(
                 children: [
-                  Badge(
-                    showBadge: (msgCount != null) ? true : false,
-                    elevation: 0,
-                    shape: BadgeShape.square,
-                    toAnimate: false,
-                    badgeColor: kThemeColor,
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                    borderRadius: BorderRadius.circular(50),
-                    badgeContent: Text('$msgCount',
-                        style: TextStyle(
-                            color: kMainWhite,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12)),
+                  Stack(
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundColor: kBottomMenuBG,
+                        child: CircleAvatar(
+                          radius: 27,
+                          backgroundImage: (imgURL != null)
+                              ? AssetImage(imgURL)
+                              : AssetImage('assets/image/noAva.jpg'),
+                        ),
+                      ),
+                      Positioned(
+                        // * Online indicator
+                        right: 3,
+                        top: 4,
+                        child: Container(
+                          width: 12,
+                          height: 12,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: (isOnline == true)
+                                ? Color(0xFF5DD27E)
+                                : Colors.transparent,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(
-                    width: 14,
+                    width: 11,
                   ),
-                  ConstrainedBox(
-                    constraints: BoxConstraints(minWidth: 40),
-                    child: Text(
-                      time,
-                      style: TextStyle(
-                          color: kSecondaryColor, fontWeight: FontWeight.w500),
+                  Flexible(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          name,
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: kMainWhite,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        SizedBox(
+                          height: 3,
+                        ),
+                        Text(
+                          msgPreview,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                          style: TextStyle(
+                              color: kSecondaryColor,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+            Row(
+              children: [
+                Badge(
+                  showBadge: (msgCount != null) ? true : false,
+                  elevation: 0,
+                  shape: BadgeShape.square,
+                  toAnimate: false,
+                  badgeColor: kThemeColor,
+                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                  borderRadius: BorderRadius.circular(50),
+                  badgeContent: Text('$msgCount',
+                      style: TextStyle(
+                          color: kMainWhite,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12)),
+                ),
+                SizedBox(
+                  width: 6,
+                ),
+                ConstrainedBox(
+                  //контейнер с минимальной шириной 50, чтобы влезло не только время но и дата формата "12 Jun" если последнее сообщение было получено не сегодня. Текст к правой границе.
+                  constraints: BoxConstraints(minWidth: 50),
+                  child: Text(
+                    time,
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                        color: kSecondaryColor, fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
