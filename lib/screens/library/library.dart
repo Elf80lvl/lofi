@@ -7,16 +7,22 @@ class Library extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          padding: EdgeInsets.only(top: 50, left: 16),
-          width: double.infinity,
-          color: kBottomMenuBG,
-          child: TextField(
-            style: TextStyle(
-              color: kMainWhite,
+        SafeArea(
+          child: Container(
+            padding: EdgeInsets.only(left: 16, right: 16),
+            height: 60,
+            width: double.infinity,
+            color: kBottomMenuBG,
+            child: Center(
+              child: TextField(
+                style: TextStyle(
+                  color: kMainWhite,
+                ),
+                decoration: kTextFieldInputDecoration.copyWith(
+                    hintText: 'Find in library'),
+                onChanged: (value) {},
+              ),
             ),
-            decoration: kTextFieldInputDecoration,
-            onChanged: (value) {},
           ),
         ),
         Padding(

@@ -3,48 +3,61 @@ import 'dart:io' show Platform; //для определения ОС устро�
 import 'package:flutter/material.dart';
 import 'package:lofi/constants.dart';
 import 'package:badges/badges.dart';
+import 'package:lofi/screens/messages/chat.dart';
 import 'package:lofi/screens/messages/msgData.dart';
 import 'msgData.dart';
 
 class Messages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          padding: EdgeInsets.only(top: 50, left: 16),
-          width: double.infinity,
-          color: kBottomMenuBG,
-          child: TextField(
-            style: TextStyle(
-              color: kMainWhite,
-            ),
-            decoration: kTextFieldInputDecoration.copyWith(
-                hintText: 'Find people, conversation'),
-            onChanged: (value) {},
-          ),
-        ),
-        Expanded(
-          // * data - массив с данными списка чата из msgData.dart
-          child: ListView.builder(
-            physics: Platform.isIOS ? BouncingScrollPhysics() : ScrollPhysics(),
-            itemCount: data.length,
-            itemBuilder: (_, index) => InkWell(
-              onTap: () {
-                print('${data[index].name} was tapped');
-              },
-              child: ChatRow(
-                imgURL: data[index].imgURL,
-                name: data[index].name,
-                msgPreview: data[index].msgPreview,
-                msgCount: data[index].msgCount,
-                time: data[index].time,
-                isOnline: data[index].isOnline,
+    return SafeArea(
+      child: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.only(left: 16, right: 16),
+            height: 60,
+            width: double.infinity,
+            color: kBottomMenuBG,
+            child: Center(
+              child: TextField(
+                style: TextStyle(
+                  color: kMainWhite,
+                ),
+                decoration: kTextFieldInputDecoration.copyWith(
+                    hintText: 'Find people, conversation'),
+                onChanged: (value) {},
               ),
             ),
           ),
-        ),
-      ],
+          Expanded(
+            // * data - массив с данными списка чата из msgData.dart
+            child: ListView.builder(
+              physics:
+                  Platform.isIOS ? BouncingScrollPhysics() : ScrollPhysics(),
+              itemCount: data.length,
+              itemBuilder: (_, index) => InkWell(
+                onTap: () {
+                  print('${data[index].name} was tapped');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) {
+                      return Chat();
+                    }),
+                  );
+                },
+                child: ChatRow(
+                  imgURL: data[index].imgURL,
+                  name: data[index].name,
+                  msgPreview: data[index].msgPreview,
+                  msgCount: data[index].msgCount,
+                  time: data[index].time,
+                  isOnline: data[index].isOnline,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
