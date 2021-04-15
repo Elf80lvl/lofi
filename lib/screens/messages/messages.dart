@@ -41,7 +41,10 @@ class Messages extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) {
-                      return Chat();
+                      return Chat(
+                          name: data[index].name,
+                          avatarURL: data[index].imgURL,
+                          isOnline: data[index].isOnline);
                     }),
                   );
                 },

@@ -3,6 +3,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:lofi/constants.dart';
 
 class Chat extends StatelessWidget {
+  Chat({this.name, this.avatarURL, this.isOnline});
+
+  final String name, avatarURL;
+  final bool isOnline;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,16 +34,19 @@ class Chat extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Tobias Mold',
+                              name,
                               style: TextStyle(
                                   color: kMainWhite,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500),
                             ),
                             Text(
-                              'online',
+                              isOnline ? 'online' : 'offline',
                               style: TextStyle(
-                                  color: Color(0xFF5DD27E), fontSize: 14),
+                                  color: (isOnline == true)
+                                      ? Color(0xFF5DD27E)
+                                      : kSecondaryColor,
+                                  fontSize: 14),
                             ),
                           ],
                         ),
@@ -54,8 +62,7 @@ class Chat extends StatelessWidget {
                       backgroundColor: kBottomMenuBG,
                       child: CircleAvatar(
                         radius: 18,
-                        backgroundImage:
-                            AssetImage('assets/image/chatAvatars/tobias.jpg'),
+                        backgroundImage: AssetImage(avatarURL),
                       ),
                     ),
                   ),
@@ -88,7 +95,7 @@ class Chat extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(left: 16, right: 16),
+              padding: EdgeInsets.only(left: 0, right: 0),
               height: 60,
               width: double.infinity,
               color: kBottomMenuBG,
@@ -98,18 +105,32 @@ class Chat extends StatelessWidget {
                     color: kMainWhite,
                   ),
                   decoration: InputDecoration(
-                    suffixStyle: TextStyle(color: Colors.white),
-                    hintText: 'Message',
-                    suffixIcon: IconButton(
+                    contentPadding: EdgeInsets.all(0),
+                    prefixIcon: IconButton(
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
                       onPressed: () {
-                        print('suffix icon pressed');
+                        print('prefix icon pressed');
                       },
                       icon: Icon(
                         Icons.attach_file,
                         color: kSecondaryColor,
                       ),
                     ),
-                    contentPadding: EdgeInsets.all(0),
+                    suffixStyle: TextStyle(color: Colors.white),
+                    hintText: 'Message',
+                    suffixIcon: IconButton(
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      //splashRadius: 0.0,
+                      onPressed: () {
+                        print('suffix icon pressed');
+                      },
+                      icon: Icon(
+                        Icons.send,
+                        color: kSecondaryColor,
+                      ),
+                    ),
                     hintStyle: TextStyle(
                       color: kSecondaryColor,
                     ),

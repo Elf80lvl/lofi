@@ -58,23 +58,27 @@ List<MsgData> data = [
     imgURL: 'assets/image/chatAvatars/tilo.jpg',
     msgPreview: 'In the dark',
     time: '6:54',
+    isOnline: false,
   ),
   MsgData(
     name: 'Elena Tonro',
     imgURL: 'assets/image/chatAvatars/elena.jpg',
     msgPreview: 'Doing the right thing',
     time: '12 Jun',
+    isOnline: false,
   ),
   MsgData(
     name: 'Julia Rock',
     imgURL: 'assets/image/chatAvatars/julia.jpg',
     msgPreview: 'Rainbows and butterflies!',
     time: '11 Jun',
+    isOnline: false,
   ),
   MsgData(
     name: 'Chelsea Foxy',
     imgURL: 'assets/image/chatAvatars/chelsea.jpg',
     msgPreview: 'acoustic',
     time: '10 Jun',
+    isOnline: false,
   ),
 ];
