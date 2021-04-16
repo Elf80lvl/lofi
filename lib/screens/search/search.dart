@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lofi/constants.dart';
 import 'package:lofi/screens/search/components/song_searched.dart';
 import 'package:lofi/screens/search/components/tag.dart';
+import 'package:lofi/screens/search/components/whats_playing_button.dart';
 
 class Search extends StatelessWidget {
   @override
@@ -35,30 +36,9 @@ class Search extends StatelessWidget {
               physics:
                   Platform.isIOS ? BouncingScrollPhysics() : ScrollPhysics(),
               children: [
-                SizedBox(
-                  height: 32,
-                ),
-                GestureDetector(
-                  // * 'what's playing' button
-                  onTap: () {
-                    print('whats playing was tapped');
-                  },
-                  child: Chip(
-                    avatar: SvgPicture.asset('assets/icons/whatsPlaying.svg'),
-                    backgroundColor: kMainWhite,
-                    padding: EdgeInsets.all(12),
-                    label: Text(
-                      'What\'s playing?',
-                      style: TextStyle(
-                          color: kBgColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 58,
-                ),
+                // * 'what's playing' button
+                WhatsPlayingButton(),
+                // * Recent searches block
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
@@ -89,26 +69,27 @@ class Search extends StatelessWidget {
                     ],
                   ),
                 ),
+                // * Tags
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 24),
                   child: Wrap(
                     spacing: 16,
                     runSpacing: 16,
                     children: [
-                      Tag('Blues'),
-                      Tag('Business'),
-                      Tag('Brazilian'),
-                      Tag('Chill'),
-                      Tag('Classical'),
-                      Tag('Country'),
-                      Tag('EDM'),
-                      Tag('Education'),
-                      Tag('Electronic'),
-                      Tag('Folk'),
-                      Tag('Gaming'),
-                      Tag('Indie'),
-                      Tag('Jazz'),
-                      Tag('K-pop'),
+                      Tag(text: 'Blues', onTap: () {}),
+                      Tag(text: 'Business', onTap: () {}),
+                      Tag(text: 'Brazilian', onTap: () {}),
+                      Tag(text: 'Chill', onTap: () {}),
+                      Tag(text: 'Classical', onTap: () {}),
+                      Tag(text: 'Country', onTap: () {}),
+                      Tag(text: 'EDM', onTap: () {}),
+                      Tag(text: 'Education', onTap: () {}),
+                      Tag(text: 'Electronic', onTap: () {}),
+                      Tag(text: 'Folk', onTap: () {}),
+                      Tag(text: 'Gaming', onTap: () {}),
+                      Tag(text: 'Indie', onTap: () {}),
+                      Tag(text: 'Jazz', onTap: () {}),
+                      Tag(text: 'K-pop', onTap: () {}),
                     ],
                   ),
                 ),

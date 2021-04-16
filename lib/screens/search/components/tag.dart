@@ -2,21 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:lofi/constants.dart';
 
 class Tag extends StatelessWidget {
-  Tag(this.text);
+  Tag({this.text, this.onTap});
 
   final String text;
+  final Function onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        print('tag tapped');
-      },
+      onTap: onTap,
       child: Chip(
           padding: EdgeInsets.all(10),
           backgroundColor: kBottomMenuBG,
           label: Text(
-            '#$text',
+            '$text',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           )),
     );

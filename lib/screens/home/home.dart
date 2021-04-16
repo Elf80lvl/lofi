@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:lofi/constants.dart';
 import 'package:lofi/screens/home/components/album.dart';
 import 'package:lofi/screens/home/components/mix.dart';
 import 'package:lofi/screens/home/components/top_music_tag.dart';
+import 'package:lofi/screens/player/player_screen.dart';
 import 'dart:io';
+import 'package:snapping_sheet/snapping_sheet.dart';
 
 class Home extends StatelessWidget {
   // const Home({
   //   Key key,
   // }) : super(key: key);
+  //
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +30,10 @@ class Home extends StatelessWidget {
                 child: Row(
                   //scrollDirection: Axis.horizontal,
                   children: <Widget>[
-                    TopMusicTag(text: '#Pop', press: () {}),
-                    TopMusicTag(text: '#Progressive', press: () {}),
-                    TopMusicTag(text: '#Indie', press: () {}),
-                    TopMusicTag(text: '#Metal', press: () {}),
+                    TopMusicTag(text: 'Pop', press: () {}),
+                    TopMusicTag(text: 'Progressive', press: () {}),
+                    TopMusicTag(text: 'Indie', press: () {}),
+                    TopMusicTag(text: 'Metal', press: () {}),
                   ],
                 ),
               ),
@@ -51,6 +55,12 @@ class Home extends StatelessWidget {
                       albumName: 'Ruins',
                       artistName: 'First Aid Kit',
                       imageURL: 'assets/image/fak.jpg',
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PlayerScreen()));
+                      },
                     ),
                     Album(
                       albumName: 'Toi Toi',
@@ -108,3 +118,22 @@ class Home extends StatelessWidget {
     );
   }
 }
+
+
+// Container(
+//           color: kBgColor,
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: [
+//               Container(
+//                 margin: EdgeInsets.symmetric(vertical: 8),
+//                 height: 4,
+//                 width: 80,
+//                 decoration: BoxDecoration(
+//                   borderRadius: BorderRadius.circular(50),
+//                   color: kBottomIconsColor,
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),

@@ -134,7 +134,7 @@ class Chat extends StatelessWidget {
                       },
                       icon: Icon(
                         Icons.send,
-                        color: kSecondaryColor,
+                        color: kThemeColor,
                       ),
                     ),
                     hintStyle: TextStyle(

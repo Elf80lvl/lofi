@@ -2,8 +2,11 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lofi/constants.dart';
+import 'package:lofi/screens/login/components/button_white.dart';
+import 'package:lofi/screens/login/components/skip_button.dart';
+import 'package:lofi/screens/login/components/textField_email.dart';
+import 'package:lofi/screens/login/components/textField_password.dart';
 import 'package:lofi/screens/login/login_screen.dart';
-import 'package:lofi/screens/main_screen.dart';
 
 class SignUpScreen extends StatelessWidget {
   @override
@@ -14,8 +17,6 @@ class SignUpScreen extends StatelessWidget {
         child: Center(
           child: SingleChildScrollView(
             child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 // * logo
                 SvgPicture.asset('assets/icons/logo.svg'),
@@ -27,52 +28,18 @@ class SignUpScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
                     children: [
-                      TextField(
-                        decoration:
-                            kTextFieldInputDecorationLoginScreen.copyWith(
-                          prefixIcon: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Icon(
-                              Icons.email_outlined,
-                              color: kSecondaryColor,
-                            ),
-                          ),
-                        ),
-                      ),
+                      TextFieldEmail(),
                       SizedBox(
                         height: 22,
                       ),
-                      TextField(
-                        decoration:
-                            kTextFieldInputDecorationLoginScreen.copyWith(
-                          hintText: 'Password',
-                          prefixIcon: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Icon(
-                              Icons.lock_outline_rounded,
-                              color: kSecondaryColor,
-                            ),
-                          ),
-                        ),
-                      ),
+                      TextFieldPassword(),
                       SizedBox(
                         height: 22,
                       ),
                       // * Sign Up button
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Sign Up',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50)),
-                          primary: kMainWhite,
-                          onPrimary: kBgColor,
-                          minimumSize: Size(double.infinity, 60),
-                        ),
+                      ButtonWhite(
+                        text: 'Sign Up',
+                        onTap: () {},
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: 16),
@@ -105,17 +72,8 @@ class SignUpScreen extends StatelessWidget {
                 SizedBox(
                   height: 48,
                 ),
-                // * Skip Button
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MainScreen()));
-                  },
-                  child: Text(
-                    'Skip',
-                    style: TextStyle(color: kThemeColor),
-                  ),
-                ),
+
+                SkipButton(),
               ],
             ),
           ),
