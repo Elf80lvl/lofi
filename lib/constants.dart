@@ -21,4 +21,18 @@ var kTextFieldInputDecoration = InputDecoration(
   ),
 );
 
+var kTextFieldInputDecorationLoginScreen = InputDecoration(
+  fillColor: Color(0XFF303541),
+  contentPadding: EdgeInsets.symmetric(horizontal: 100, vertical: 22),
+  filled: true,
+  hintText: 'Email',
+  hintStyle: TextStyle(color: kSecondaryColor),
+  border: OutlineInputBorder(
+    borderSide: BorderSide.none,
+    borderRadius: BorderRadius.all(
+      Radius.circular(50),
+    ),
+  ),
+);
+
 const kBorderRadiusDefault = 10.0;

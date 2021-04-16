@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lofi/constants.dart';
+import 'package:lofi/screens/login/login_screen.dart';
 import 'screens/main_screen.dart';
 
 void main() {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         bottomAppBarColor: kBgColor,
         scaffoldBackgroundColor: kBgColor,
       ),
-      home: MainScreen(),
+      home: LoginScreen(),
     );
   }
 }

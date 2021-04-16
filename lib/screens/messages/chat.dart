@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lofi/constants.dart';
+import 'package:lofi/screens/messages/message.dart';
 
 class Chat extends StatelessWidget {
   Chat({this.name, this.avatarURL, this.isOnline});
@@ -71,24 +72,29 @@ class Chat extends StatelessWidget {
             ),
             Flexible(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: ListView(
                   children: [
-                    MessageRight(
+                    Message(
                       message: 'Prequell is a blast',
                       time: '6:50',
+                      isMe: true,
                     ),
-                    MessageRight(
+                    Message(
                       message: 'Keep up the good work!',
                       time: '6:50',
+                      isMe: true,
                     ),
-                    MessageLeft(
+                    Message(
                       message: 'Thank you!',
                       time: '6:55',
+                      isMe: false,
                     ),
-                    MessageLeft(
+                    Message(
                       message: 'Trying my best!',
                       time: '6:55',
+                      isMe: false,
                     ),
                   ],
                 ),
@@ -149,118 +155,118 @@ class Chat extends StatelessWidget {
   }
 }
 
-class MessageRight extends StatelessWidget {
-  const MessageRight({
-    Key key,
-    this.message,
-    this.time,
-  }) : super(key: key);
-  final String message, time;
+// class MessageRight extends StatelessWidget {
+//   const MessageRight({
+//     Key key,
+//     this.message,
+//     this.time,
+//   }) : super(key: key);
+//   final String message, time;
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 7),
-      child: Row(
-        children: [
-          Expanded(
-            child: Container(),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-            decoration: BoxDecoration(
-              color: kMainWhite,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(30),
-                topLeft: Radius.circular(30),
-                topRight: Radius.circular(30),
-              ),
-            ),
-            child: Row(
-              children: [
-                Text(
-                  message,
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                      color: kBgColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500),
-                ),
-                SizedBox(
-                  width: 16,
-                ),
-                Text(
-                  '6:50',
-                  style: TextStyle(
-                      color: kSecondaryColor,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500),
-                ),
-                SizedBox(
-                  width: 16,
-                ),
-                SvgPicture.asset('assets/icons/msgChecked.svg'),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: const EdgeInsets.only(top: 7),
+//       child: Row(
+//         children: [
+//           Expanded(
+//             child: Container(),
+//           ),
+//           Container(
+//             padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+//             decoration: BoxDecoration(
+//               color: kMainWhite,
+//               borderRadius: BorderRadius.only(
+//                 bottomLeft: Radius.circular(30),
+//                 topLeft: Radius.circular(30),
+//                 topRight: Radius.circular(30),
+//               ),
+//             ),
+//             child: Row(
+//               children: [
+//                 Text(
+//                   message,
+//                   textAlign: TextAlign.right,
+//                   style: TextStyle(
+//                       color: kBgColor,
+//                       fontSize: 16,
+//                       fontWeight: FontWeight.w500),
+//                 ),
+//                 SizedBox(
+//                   width: 16,
+//                 ),
+//                 Text(
+//                   '6:50',
+//                   style: TextStyle(
+//                       color: kSecondaryColor,
+//                       fontSize: 14,
+//                       fontWeight: FontWeight.w500),
+//                 ),
+//                 SizedBox(
+//                   width: 16,
+//                 ),
+//                 SvgPicture.asset('assets/icons/msgChecked.svg'),
+//               ],
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
-class MessageLeft extends StatelessWidget {
-  const MessageLeft({
-    Key key,
-    this.message,
-    this.time,
-  }) : super(key: key);
-  final String message, time;
+// class MessageLeft extends StatelessWidget {
+//   const MessageLeft({
+//     Key key,
+//     this.message,
+//     this.time,
+//   }) : super(key: key);
+//   final String message, time;
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 7),
-      child: Row(
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-            decoration: BoxDecoration(
-              color: kBottomMenuBG,
-              borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(30),
-                topLeft: Radius.circular(30),
-                topRight: Radius.circular(30),
-              ),
-            ),
-            child: Row(
-              children: [
-                Text(
-                  message,
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                      color: kMainWhite,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500),
-                ),
-                SizedBox(
-                  width: 16,
-                ),
-                Text(
-                  '6:50',
-                  style: TextStyle(
-                      color: kSecondaryColor,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Container(),
-          ),
-        ],
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: const EdgeInsets.only(top: 7),
+//       child: Row(
+//         children: [
+//           Container(
+//             padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+//             decoration: BoxDecoration(
+//               color: kBottomMenuBG,
+//               borderRadius: BorderRadius.only(
+//                 bottomRight: Radius.circular(30),
+//                 topLeft: Radius.circular(30),
+//                 topRight: Radius.circular(30),
+//               ),
+//             ),
+//             child: Row(
+//               children: [
+//                 Text(
+//                   message,
+//                   textAlign: TextAlign.right,
+//                   style: TextStyle(
+//                       color: kMainWhite,
+//                       fontSize: 16,
+//                       fontWeight: FontWeight.w500),
+//                 ),
+//                 SizedBox(
+//                   width: 16,
+//                 ),
+//                 Text(
+//                   '6:50',
+//                   style: TextStyle(
+//                       color: kSecondaryColor,
+//                       fontSize: 14,
+//                       fontWeight: FontWeight.w500),
+//                 ),
+//               ],
+//             ),
+//           ),
+//           Expanded(
+//             child: Container(),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
