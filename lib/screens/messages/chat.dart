@@ -96,6 +96,23 @@ class Chat extends StatelessWidget {
                       time: '6:55',
                       isMe: false,
                     ),
+                    Message(
+                      message:
+                          'During a concert in the bands hometown of Linköping, Sweden in 2012, Papa Emeritus was ostensibly retired and replaced by a supposedly new vocalist, Papa Emeritus II, which was actually Forge in another costume.[17] The band\'s second album Infestissumam was released in 2013. Due to a legal dispute over the bands name, they were forced to release the album using the name Ghost B.C. in the United States.',
+                      time: '6:50',
+                      isMe: true,
+                    ),
+                    Message(
+                      message: 'that\'s about me',
+                      time: '6:50',
+                      isMe: false,
+                    ),
+                    Message(
+                      message:
+                          'Despite anonymity being one of Ghost\'s biggest themes, Forge\'s identity as Papa Emeritus was revealed following a lawsuit in April 2017 by former Ghost members over a royalties dispute.',
+                      time: '6:50',
+                      isMe: false,
+                    ),
                   ],
                 ),
               ),

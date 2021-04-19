@@ -5,7 +5,7 @@ import 'package:lofi/constants.dart';
 import 'package:lofi/screens/account/account.dart';
 import 'package:lofi/screens/home/home.dart';
 import 'package:lofi/screens/library/library.dart';
-import 'package:lofi/screens/messages/messages.dart';
+import 'package:lofi/screens/messages/messages_screen.dart';
 import 'package:lofi/screens/search/search.dart';
 
 class MainScreen extends StatefulWidget {
