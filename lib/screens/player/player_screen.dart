@@ -119,7 +119,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
                     data: SliderThemeData(
                         overlayShape: RoundSliderOverlayShape(
                             overlayRadius:
-                                15.0), // * радиус фигулины которая появляется при перемещении указателя слайдера
+                                16.0), // * радиус фигулины которая появляется при перемещении указателя слайдера
                         trackShape: RoundSliderTrackShape(),
                         trackHeight: 4,
                         thumbShape:

@@ -54,7 +54,7 @@ class Home extends StatelessWidget {
                     Album(
                       albumName: 'Ruins',
                       artistName: 'First Aid Kit',
-                      imageURL: 'assets/image/fak.jpg',
+                      imageURL: 'assets/image/albumCovers/rebelHeart.jpg',
                       onTap: () {
                         Navigator.push(
                             context,

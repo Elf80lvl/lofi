@@ -118,7 +118,7 @@ class Message extends StatelessWidget {
             gradient: LinearGradient(
               colors: isMe
                   ? [kMainWhite, kMainWhite]
-                  : [const Color(0x1AFFFFFF), const Color(0x1AFFFFFF)],
+                  : [kBottomMenuBG, kBottomMenuBG],
             )),
         child: Text(message,
             textAlign: TextAlign.start,

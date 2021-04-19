@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lofi/constants.dart';
 import 'package:community_material_icon/community_material_icon.dart';
+import 'package:lofi/screens/artist/artist_screen.dart';
 
 class PopUpMenuOfSong extends StatelessWidget {
   const PopUpMenuOfSong({
@@ -42,6 +43,12 @@ class PopUpMenuOfSong extends StatelessWidget {
             MenuTile(
               text: 'Artist page',
               icon: CommunityMaterialIcons.account_music,
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return ArtistScreen();
+                }));
+              },
             ),
             MenuTile(
               text: 'Album page',
