@@ -18,6 +18,10 @@ var _songCurrentTime = 0.0;
 var _songFullTime = 5.24;
 
 class PlayerScreen extends StatefulWidget {
+  PlayerScreen({this.imgURL, this.artistName, this.albumName, this.songName});
+
+  final String artistName, imgURL, albumName, songName;
+
   @override
   _PlayerScreenState createState() => _PlayerScreenState();
 }
@@ -55,7 +59,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
                 // * BG IMAGE
                 Positioned.fill(
                   child: Image.asset(
-                    'assets/image/albumCovers/rebelHeart.jpg',
+                    widget.imgURL,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -115,7 +119,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
                         borderRadius:
                             BorderRadius.circular(kBorderRadiusDefault),
                         child: Image.asset(
-                          'assets/image/albumCovers/rebelHeart.jpg',
+                          widget.imgURL,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -125,11 +129,12 @@ class _PlayerScreenState extends State<PlayerScreen> {
                   SizedBox(
                     height: 8,
                   ),
+
                   // * Song And Artist name
                   Column(
                     children: [
                       Text(
-                        'Rebel Heart',
+                        widget.songName,
                         style: TextStyle(
                             color: kMainWhite,
                             fontSize: 20,
@@ -139,7 +144,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
                         height: 5,
                       ),
                       Text(
-                        'First Aid Kit',
+                        widget.artistName,
                         style: TextStyle(
                             color: kSecondaryColor,
                             fontSize: 16,
@@ -286,7 +291,10 @@ class _PlayerScreenState extends State<PlayerScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => PlaylistScreen()));
+                                  builder: (context) => PlaylistScreen(
+                                        artistName: widget.artistName,
+                                        albumName: widget.albumName,
+                                      )));
                         },
                       ),
                     ],

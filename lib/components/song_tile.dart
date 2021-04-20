@@ -36,7 +36,7 @@ class SongTile extends StatelessWidget {
           songName,
           style: TextStyle(
             color: kMainWhite,
-            fontSize: 18,
+            fontSize: 16,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -45,7 +45,7 @@ class SongTile extends StatelessWidget {
                 '$artistName',
                 style: TextStyle(
                   color: kSecondaryColor,
-                  fontSize: 15,
+                  fontSize: 14,
                   fontWeight: FontWeight.w500,
                 ),
               )
@@ -53,7 +53,7 @@ class SongTile extends StatelessWidget {
                 '$artistName - $albumName',
                 style: TextStyle(
                   color: kSecondaryColor,
-                  fontSize: 15,
+                  fontSize: 14,
                   fontWeight: FontWeight.w500,
                 ),
               ),

@@ -52,6 +52,23 @@ class Home extends StatelessWidget {
                 child: Row(
                   children: [
                     Album(
+                      albumName: 'Stay Gold',
+                      artistName: 'First Aid Kit',
+                      imageURL: 'assets/image/albumCovers/mySilverLining.jpg',
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PlayerScreen(
+                                      imgURL:
+                                          'assets/image/albumCovers/mySilverLining.jpg',
+                                      artistName: 'First Aid Kit',
+                                      songName: 'My Silver Lining',
+                                      albumName: 'Stay Gold',
+                                    )));
+                      },
+                    ),
+                    Album(
                       albumName: 'Ruins',
                       artistName: 'First Aid Kit',
                       imageURL: 'assets/image/albumCovers/rebelHeart.jpg',
@@ -59,13 +76,30 @@ class Home extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => PlayerScreen()));
+                                builder: (context) => PlayerScreen(
+                                      imgURL:
+                                          'assets/image/albumCovers/rebelHeart.jpg',
+                                      artistName: 'First Aid Kit',
+                                      songName: 'Rebel Heart',
+                                      albumName: 'Ruins',
+                                    )));
                       },
                     ),
                     Album(
                       albumName: 'Toi Toi',
                       artistName: 'Suzane',
                       imageURL: 'assets/image/suzane.jpg',
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PlayerScreen(
+                                      imgURL: 'assets/image/suzane.jpg',
+                                      artistName: 'Suzane',
+                                      songName: 'Linsatisfat',
+                                      albumName: 'Toi Toi',
+                                    )));
+                      },
                     ),
                     Album(
                       albumName: 'Mirele',

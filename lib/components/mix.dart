@@ -69,7 +69,7 @@ class Mix extends StatelessWidget {
           SizedBox(height: 16),
           Text(
             mixName,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
           ),
         ],
       ),

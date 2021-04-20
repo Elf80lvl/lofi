@@ -1,63 +1,68 @@
 class SongData {
-  int songNumber;
-  String songName;
-  bool isPlaying = false;
+  String imgURL, songName, artistName, albumName;
 
-  SongData({this.songNumber, this.songName, this.isPlaying});
+  SongData({this.imgURL, this.songName, this.artistName, this.albumName});
 }
 
 List<SongData> songData = [
   SongData(
-    songNumber: 1,
-    songName: 'Rebel Heart',
-    isPlaying: true,
+    imgURL: 'assets/image/albumCovers/mySilverLining.jpg',
+    songName: 'My Silver Lining',
+    artistName: 'First Aid Kit',
+    albumName: 'Ruins',
   ),
   SongData(
-    songNumber: 2,
-    songName: 'It\'s a Shame',
+    imgURL: 'assets/image/albumCovers/mySilverLining.jpg',
+    songName: 'Master Pretender',
+    artistName: 'First Aid Kit',
+    albumName: 'Ruins',
   ),
   SongData(
-    songNumber: 3,
-    songName: 'Fireworks',
+    imgURL: 'assets/image/albumCovers/mySilverLining.jpg',
+    songName: 'Stay Gold',
+    artistName: 'First Aid Kit',
+    albumName: 'Ruins',
   ),
   SongData(
-    songNumber: 4,
-    songName: 'Postcard',
+    imgURL: 'assets/image/albumCovers/mySilverLining.jpg',
+    songName: 'Cedar Lane',
+    artistName: 'First Aid Kit',
+    albumName: 'Ruins',
   ),
   SongData(
-    songNumber: 5,
-    songName: 'To Live a Life',
+    imgURL: 'assets/image/albumCovers/mySilverLining.jpg',
+    songName: 'Shattered & Hollow',
+    artistName: 'First Aid Kit',
+    albumName: 'Ruins',
   ),
   SongData(
-    songNumber: 6,
-    songName: 'My Wild Sweet Love',
+    imgURL: 'assets/image/albumCovers/mySilverLining.jpg',
+    songName: 'The Bell',
+    artistName: 'First Aid Kit',
+    albumName: 'Ruins',
   ),
   SongData(
-    songNumber: 7,
-    songName: 'Distant Star',
+    imgURL: 'assets/image/albumCovers/mySilverLining.jpg',
+    songName: 'Waitress Song',
+    artistName: 'First Aid Kit',
+    albumName: 'Ruins',
   ),
   SongData(
-    songNumber: 8,
-    songName: 'Ruin',
+    imgURL: 'assets/image/albumCovers/mySilverLining.jpg',
+    songName: 'Fleeting One',
+    artistName: 'First Aid Kit',
+    albumName: 'Ruins',
   ),
   SongData(
-    songNumber: 9,
-    songName: 'Hem of Her Dress',
+    imgURL: 'assets/image/albumCovers/mySilverLining.jpg',
+    songName: 'Heaven Knows',
+    artistName: 'First Aid Kit',
+    albumName: 'Ruins',
   ),
   SongData(
-    songNumber: 10,
-    songName: 'Nothing Has to Be True',
-  ),
-  SongData(
-    songNumber: 11,
-    songName: 'Sample Long Name to Test the text overflow',
-  ),
-  SongData(
-    songNumber: 12,
-    songName: 'Sample Long Name to Test the text overflow',
-  ),
-  SongData(
-    songNumber: 14,
-    songName: 'Sample Long Name to Test the text overflow',
+    imgURL: 'assets/image/albumCovers/mySilverLining.jpg',
+    songName: 'A Long Time Ago',
+    artistName: 'First Aid Kit',
+    albumName: 'Ruins',
   ),
 ];

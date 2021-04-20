@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lofi/components/menu_tile.dart';
 import 'package:lofi/constants.dart';
 import 'package:community_material_icon/community_material_icon.dart';
-import 'package:lofi/screens/artist/artist_screen.dart';
+import 'package:lofi/components/undo/artist_screen.dart';
 import 'package:lofi/screens/artist/artist_screen_v2.dart';
 
 class PopUpMenuOfSong extends StatelessWidget {

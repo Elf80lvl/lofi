@@ -8,7 +8,14 @@ import 'package:lofi/constants.dart';
 import 'package:lofi/components/album.dart';
 import 'package:lofi/components/undo/popUpMenuOfSong.dart';
 
-class ArtistScreen2 extends StatelessWidget {
+bool isLikedButtonPressed = false;
+
+class ArtistScreen2 extends StatefulWidget {
+  @override
+  _ArtistScreen2State createState() => _ArtistScreen2State();
+}
+
+class _ArtistScreen2State extends State<ArtistScreen2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,13 +90,26 @@ class ArtistScreen2 extends StatelessWidget {
                 Row(
                   children: [
                     // * -LIKE BUTTON-
-                    MyIconButtonWithBG(
-                      icon: Icons.favorite,
-                      width: 30,
-                      height: 30,
-                      bgColor: kBgColor,
-                      iconColor: kMainWhite,
-                      iconSize: 18,
+
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isLikedButtonPressed == true
+                              ? isLikedButtonPressed = false
+                              : isLikedButtonPressed = true;
+                          print('repeat button is $isLikedButtonPressed');
+                        });
+                      },
+                      child: MyIconButtonWithBG(
+                        icon: Icons.favorite,
+                        width: 30,
+                        height: 30,
+                        bgColor: kBgColor,
+                        iconColor: (isLikedButtonPressed == false)
+                            ? kMainWhite
+                            : kThemeColor,
+                        iconSize: 18,
+                      ),
                     ),
                     // * END OF -LIKE BUTTON-
 
@@ -157,15 +177,24 @@ class ArtistScreen2 extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          'Top Songs',
-                          style: TextStyle(
-                              color: kMainWhite,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold),
-                        ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Top Songs',
+                            style: TextStyle(
+                                color: kMainWhite,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              'See All',
+                              style: TextStyle(color: kSecondaryColor),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     SizedBox(
@@ -207,15 +236,24 @@ class ArtistScreen2 extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          'Albums',
-                          style: TextStyle(
-                              color: kMainWhite,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold),
-                        ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Albums',
+                            style: TextStyle(
+                                color: kMainWhite,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              'See All',
+                              style: TextStyle(color: kSecondaryColor),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     SizedBox(
