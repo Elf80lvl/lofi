@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lofi/constants.dart';
-import 'package:lofi/screens/home/components/album.dart';
-import 'package:lofi/screens/home/components/mix.dart';
-import 'package:lofi/screens/home/components/top_music_tag.dart';
+import 'package:lofi/components/album.dart';
+import 'package:lofi/components/mix.dart';
+import 'package:lofi/components/top_music_tag.dart';
 import 'package:lofi/screens/player/player_screen.dart';
 import 'dart:io';
 import 'package:snapping_sheet/snapping_sheet.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lofi/constants.dart';
-import 'package:lofi/screens/library/components/menu_el_with_icon.dart';
+import 'package:lofi/components/menu_el_with_icon.dart';
 
 class Library extends StatelessWidget {
   @override

@@ -2,10 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lofi/components/song_tile.dart';
 import 'package:lofi/constants.dart';
-import 'package:lofi/screens/search/components/song_searched.dart';
-import 'package:lofi/screens/search/components/tag.dart';
-import 'package:lofi/screens/search/components/whats_playing_button.dart';
+import 'package:lofi/components/song_searched.dart';
+import 'package:lofi/components/tag.dart';
+import 'package:lofi/components/whats_playing_button.dart';
 
 class Search extends StatelessWidget {
   @override
@@ -39,13 +40,13 @@ class Search extends StatelessWidget {
                 // * 'what's playing' button
                 WhatsPlayingButton(),
                 // * Recent searches block
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    //mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  //mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Text(
                         'Recent searches',
                         style: TextStyle(
                           color: kMainWhite,
@@ -53,21 +54,27 @@ class Search extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      SongSearched(
-                        imgURL: 'assets/image/woodkid.jpg',
-                        title: 'Iron',
-                        subtitle: 'Woodkid',
-                      ),
-                      SongSearched(
-                        imgURL: 'assets/image/medicine.jpg',
-                        title: 'Medicine',
-                        subtitle: 'Daughter',
-                      ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    SongTile(
+                      imgURL: 'assets/image/woodkid.jpg',
+                      songName: 'Iron',
+                      artistName: 'Woodkid',
+                    ),
+                    SongTile(
+                      imgURL: 'assets/image/medicine.jpg',
+                      songName: 'Medicine',
+                      artistName: 'Daughter',
+                    ),
+                    SongTile(
+                      imgURL: 'assets/image/albumCovers/rebelHeart.jpg',
+                      songName: 'Fireworks',
+                      artistName: 'First Aid Kit',
+                      albumName: 'Ruins',
+                    ),
+                  ],
                 ),
                 // * Tags
                 Padding(

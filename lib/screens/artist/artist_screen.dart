@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lofi/constants.dart';
-import 'package:lofi/screens/player/popUpMenuOfSong.dart';
+import 'package:lofi/components/album.dart';
+import 'package:lofi/components/undo/popUpMenuOfSong.dart';
 
 class ArtistScreen extends StatelessWidget {
   @override
@@ -17,7 +18,7 @@ class ArtistScreen extends StatelessWidget {
           children: [
             Row(
               children: [
-                // * BACK BUTTON
+                // * -BACK BUTTON-
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).pop();
@@ -34,10 +35,12 @@ class ArtistScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                // * END OF -BACK BUTTON-
               ],
             ),
             Row(
               children: [
+                // * -LIKE BUTTON-
                 Container(
                   width: 30,
                   height: 30,
@@ -49,9 +52,13 @@ class ArtistScreen extends StatelessWidget {
                     color: kMainWhite,
                   ),
                 ),
+                // * END OF -LIKE BUTTON-
+
                 SizedBox(
                   width: 16,
                 ),
+
+                // * -MORE BUTTON-
                 Container(
                   width: 30,
                   height: 30,
@@ -63,6 +70,7 @@ class ArtistScreen extends StatelessWidget {
                     color: kMainWhite,
                   ),
                 ),
+                // * END OF -MORE BUTTON-
               ],
             ),
           ],
@@ -73,9 +81,13 @@ class ArtistScreen extends StatelessWidget {
           children: [
             Stack(
               children: [
+                // * -ARTIST IMAGE-
                 Container(
                   child: Image.asset('assets/image/artists/fak.jpg'),
                 ),
+                // * END OF -ARTIST IMAGE-
+
+                // * -GRADIENT-
                 Container(
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.width,
@@ -84,6 +96,10 @@ class ArtistScreen extends StatelessWidget {
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
+                      stops: [
+                        0.2,
+                        0.85,
+                      ],
                       colors: [
                         Colors.transparent,
                         kBgColor,
@@ -91,6 +107,8 @@ class ArtistScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                // * END OF -GRADIENT-
+
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
@@ -143,15 +161,21 @@ class ArtistScreen extends StatelessWidget {
               padding: EdgeInsets.only(top: 48),
               child: Column(
                 children: [
-                  Text(
-                    'Top Songs',
-                    style: TextStyle(
-                        color: kMainWhite,
-                        fontSize: 22,
-                        fontWeight: FontWeight.w500),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Top Songs',
+                        style: TextStyle(
+                            color: kMainWhite,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                   SizedBox(
-                    height: 16,
+                    height: 8,
                   ),
                   SongTile(
                     imgURL: 'assets/image/albumCovers/mySilverLining.jpg',
@@ -182,9 +206,71 @@ class ArtistScreen extends StatelessWidget {
             ),
             // * End of TOP SONGS BLOCK
 
+            // * ALBUMS Block
+            Padding(
+              padding: EdgeInsets.only(top: 48),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Albums',
+                        style: TextStyle(
+                            color: kMainWhite,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Album(
+                            imageURL: 'assets/image/albumCovers/rebelHeart.jpg',
+                            albumName: 'Rebel Heart',
+                            artistName: 'Album, 2018',
+                            onTap: () {},
+                          ),
+                          Album(
+                            imageURL:
+                                'assets/image/albumCovers/mySilverLining.jpg',
+                            albumName: 'Stay Gold',
+                            artistName: 'Album, 2014',
+                            onTap: () {},
+                          ),
+                          Album(
+                            imageURL: 'assets/image/albumCovers/lionsRoar.jpg',
+                            albumName: 'The Lion\'s Roar',
+                            artistName: 'Album, 2012',
+                            onTap: () {},
+                          ),
+                          Album(
+                            imageURL: 'assets/image/albumCovers/whoByFire.jpg',
+                            albumName: 'Who By Fire',
+                            artistName: 'Album, 2021',
+                            onTap: () {},
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // * End of ALBUMS BLOCK
+
             // the very last margin
             SizedBox(
-              height: 16,
+              height: 32,
             ),
           ],
         ),

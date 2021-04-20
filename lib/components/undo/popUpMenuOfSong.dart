@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lofi/components/menu_tile.dart';
 import 'package:lofi/constants.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:lofi/screens/artist/artist_screen.dart';
+import 'package:lofi/screens/artist/artist_screen_v2.dart';
 
 class PopUpMenuOfSong extends StatelessWidget {
   const PopUpMenuOfSong({
@@ -29,6 +31,7 @@ class PopUpMenuOfSong extends StatelessWidget {
             MenuTile(
               text: 'Like',
               icon: Icons.favorite,
+              size: 16,
               onTap: () {
                 print('like pressed');
               },
@@ -43,75 +46,38 @@ class PopUpMenuOfSong extends StatelessWidget {
             MenuTile(
               text: 'Artist page',
               icon: CommunityMaterialIcons.account_music,
+              size: 22,
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return ArtistScreen();
+                  return ArtistScreen2();
                 }));
               },
             ),
             MenuTile(
               text: 'Album page',
               icon: Icons.album,
+              size: 18,
             ),
             MenuTile(
               text: 'Download',
               icon: Icons.download_rounded,
+              size: 21,
             ),
             MenuTile(
               text: 'Start radio',
               icon: CommunityMaterialIcons.access_point,
+              size: 21,
             ),
             MenuTile(
               text: 'Discuss',
-              icon: Icons.forum,
+              icon: CommunityMaterialIcons.chat,
+              size: 17,
             ),
             MenuTile(
               text: 'Share',
               icon: Icons.share,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class MenuTile extends StatelessWidget {
-  const MenuTile({
-    Key key,
-    this.onTap,
-    this.text,
-    this.icon,
-    this.size,
-  }) : super(key: key);
-
-  final Function onTap;
-  final String text;
-  final IconData icon;
-  final double size;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              icon,
-              size: size,
-              color: kSecondaryColor,
-            ),
-            SizedBox(
-              width: 16,
-            ),
-            Text(
-              text,
-              style: TextStyle(
-                  color: kMainWhite, fontSize: 16, fontWeight: FontWeight.w500),
+              size: 18,
             ),
           ],
         ),

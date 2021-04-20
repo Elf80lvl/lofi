@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lofi/constants.dart';
-import 'package:lofi/screens/account/components/menu_el.dart';
+import 'package:lofi/components/menu_el.dart';
 
 class Account extends StatelessWidget {
   @override

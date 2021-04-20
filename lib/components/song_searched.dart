@@ -61,7 +61,10 @@ class SongSearched extends StatelessWidget {
               ],
             ),
             IconButton(
-                icon: SvgPicture.asset('assets/icons/more.svg'),
+                icon: Icon(
+                  Icons.more_horiz_rounded,
+                  color: kSecondaryColor,
+                ),
                 onPressed: () {
                   print('more button was tapped');
                 }),

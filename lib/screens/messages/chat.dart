@@ -24,10 +24,11 @@ class Chat extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: SvgPicture.asset('assets/icons/back.svg')),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(Icons.chevron_left_rounded),
+                  ),
                   Container(
                     child: Row(
                       children: [

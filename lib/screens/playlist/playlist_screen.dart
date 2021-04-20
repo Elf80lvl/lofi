@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:lofi/constants.dart';
-import 'package:lofi/screens/player/popUpMenuOfSong.dart';
-import 'songData.dart';
+import 'package:lofi/components/undo/popUpMenuOfSong.dart';
+import '../player/songData.dart';
 
 class PlaylistScreen extends StatelessWidget {
   @override
@@ -52,8 +52,8 @@ class PlaylistScreen extends StatelessWidget {
             Navigator.pop(context);
           },
           child: Icon(
-            Icons.arrow_back_ios_outlined,
-            size: 20,
+            Icons.chevron_left_rounded,
+            //size: 20,
             color: kMainWhite,
           ),
         ),
@@ -75,7 +75,7 @@ class PlaylistScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Icon(
                 Icons.more_horiz,
-                size: 30,
+                //size: 30,
                 color: kMainWhite,
               ),
             ),
@@ -171,7 +171,6 @@ class SongName extends StatelessWidget {
           ),
           Icon(
             Icons.more_horiz,
-            size: 30,
             color: kSecondaryColor,
           ),
         ],

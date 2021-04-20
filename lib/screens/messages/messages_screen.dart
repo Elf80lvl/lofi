@@ -66,7 +66,6 @@ class Messages extends StatelessWidget {
 }
 
 // * Строка юзера чата с картинкой, именем, превью сообщения, количеством непрочитанных сообщений, временем и сосятояние онлайн
-
 class ChatRow extends StatelessWidget {
   ChatRow(
       {this.imgURL,

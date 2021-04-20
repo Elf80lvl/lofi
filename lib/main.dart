@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lofi/constants.dart';
+import 'package:lofi/screens/artist/artist_screen_v2.dart';
 import 'package:lofi/screens/login/login_screen.dart';
 import 'screens/main_screen.dart';
 
