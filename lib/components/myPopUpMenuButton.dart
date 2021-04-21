@@ -8,13 +8,21 @@ class MyPopUpMenuButton extends StatelessWidget {
   const MyPopUpMenuButton({
     Key key,
     this.color,
+    this.bgColor,
   }) : super(key: key);
 
   final Color color;
+  final Color bgColor;
 
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
+      onSelected: (result) {
+        if (result == 3) {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => ArtistScreen2()));
+        }
+      },
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20.0))),
       color: kBottomMenuBG,
@@ -23,15 +31,16 @@ class MyPopUpMenuButton extends StatelessWidget {
         height: 30,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: kBgColor,
+          color: bgColor != null ? bgColor : kBgColor,
         ),
         child: Icon(
           Icons.more_horiz_rounded,
-          color: color,
+          color: color != null ? color : kMainWhite,
         ),
       ),
       itemBuilder: (context) => [
         PopupMenuItem(
+          value: 1,
           child: MenuTile(
             text: 'Like',
             icon: Icons.favorite,
@@ -42,6 +51,7 @@ class MyPopUpMenuButton extends StatelessWidget {
           ),
         ),
         PopupMenuItem(
+          value: 2,
           child: MenuTile(
             text: 'Add to playlist',
             icon: Icons.playlist_add,
@@ -51,19 +61,15 @@ class MyPopUpMenuButton extends StatelessWidget {
           ),
         ),
         PopupMenuItem(
+          value: 3,
           child: MenuTile(
             text: 'Artist page',
             icon: CommunityMaterialIcons.account_music,
             size: 22,
-            onTap: () {
-              Navigator.of(context).pop();
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return ArtistScreen2();
-              }));
-            },
           ),
         ),
         PopupMenuItem(
+          value: 4,
           child: MenuTile(
             text: 'Album page',
             icon: Icons.album,
@@ -71,6 +77,7 @@ class MyPopUpMenuButton extends StatelessWidget {
           ),
         ),
         PopupMenuItem(
+          value: 5,
           child: MenuTile(
             text: 'Download',
             icon: Icons.download_rounded,
@@ -78,6 +85,7 @@ class MyPopUpMenuButton extends StatelessWidget {
           ),
         ),
         PopupMenuItem(
+          value: 6,
           child: MenuTile(
             text: 'Start radio',
             icon: CommunityMaterialIcons.access_point,
@@ -85,6 +93,7 @@ class MyPopUpMenuButton extends StatelessWidget {
           ),
         ),
         PopupMenuItem(
+          value: 7,
           child: MenuTile(
             text: 'Discuss',
             icon: CommunityMaterialIcons.chat,
@@ -92,6 +101,7 @@ class MyPopUpMenuButton extends StatelessWidget {
           ),
         ),
         PopupMenuItem(
+          value: 8,
           child: MenuTile(
             text: 'Share',
             icon: Icons.share,

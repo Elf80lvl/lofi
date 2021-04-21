@@ -23,7 +23,7 @@ var kTextFieldInputDecoration = InputDecoration(
 
 var kTextFieldInputDecorationLoginScreen = InputDecoration(
   fillColor: Color(0XFF303541),
-  contentPadding: EdgeInsets.symmetric(horizontal: 100, vertical: 22),
+  contentPadding: EdgeInsets.only(top: 22, bottom: 22, right: 22),
   filled: true,
   hintText: 'Email',
   hintStyle: TextStyle(color: kSecondaryColor),

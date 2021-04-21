@@ -55,6 +55,7 @@ class Home extends StatelessWidget {
                       albumName: 'Stay Gold',
                       artistName: 'First Aid Kit',
                       imageURL: 'assets/image/albumCovers/mySilverLining.jpg',
+                      onLongPress: () {},
                       onTap: () {
                         Navigator.push(
                             context,
@@ -102,9 +103,21 @@ class Home extends StatelessWidget {
                       },
                     ),
                     Album(
-                      albumName: 'Mirele',
+                      albumName: 'Кокон',
                       artistName: 'Mirele',
-                      imageURL: 'assets/image/mirele.jpg',
+                      imageURL: 'assets/image/albumCovers/kokon.jpg',
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PlayerScreen(
+                                      imgURL:
+                                          'assets/image/albumCovers/kokon.jpg',
+                                      artistName: 'Mirele',
+                                      songName: 'Shalom',
+                                      albumName: 'Кокон',
+                                    )));
+                      },
                     ),
                   ],
                 ),

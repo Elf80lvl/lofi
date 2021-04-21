@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:lofi/components/myPopUpMenuButton.dart';
+import 'package:lofi/components/my_icon_button_with_bg.dart';
 import 'package:lofi/components/song_tile.dart';
 import 'package:lofi/constants.dart';
 import 'package:lofi/components/undo/popUpMenuOfSong.dart';
@@ -22,48 +23,56 @@ class PlaylistScreen extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            GestureDetector(
+            MyIconButtonWithBG(
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Icon(
-                Icons.chevron_left_rounded,
+              icon: Icons.chevron_left_rounded,
+              iconColor: kMainWhite,
+            ),
+
+            Text(
+              albumName,
+              style: TextStyle(
+                fontSize: 16,
                 color: kMainWhite,
+                fontWeight: FontWeight.w500,
+                //decoration: TextDecoration.underline,
               ),
             ),
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: albumName,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: kMainWhite,
-                      fontWeight: FontWeight.w500,
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
-                  TextSpan(text: ' '),
-                  TextSpan(
-                    text: 'by ',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: kSecondaryColor,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  TextSpan(
-                    text: artistName,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: kMainWhite,
-                      fontWeight: FontWeight.w500,
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            // RichText(
+            //   text: TextSpan(
+            //     children: [
+            //       TextSpan(
+            //         text: albumName,
+            //         style: TextStyle(
+            //           fontSize: 16,
+            //           color: kMainWhite,
+            //           fontWeight: FontWeight.w500,
+            //           //decoration: TextDecoration.underline,
+            //         ),
+            //       ),
+            //       TextSpan(text: ' '),
+            //       TextSpan(
+            //         text: 'by ',
+            //         style: TextStyle(
+            //           fontSize: 16,
+            //           color: kSecondaryColor,
+            //           fontWeight: FontWeight.w500,
+            //         ),
+            //       ),
+            //       TextSpan(
+            //         text: artistName,
+            //         style: TextStyle(
+            //           fontSize: 16,
+            //           color: kMainWhite,
+            //           fontWeight: FontWeight.w500,
+            //           //decoration: TextDecoration.underline,
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
             MyPopUpMenuButton(),
           ],
         ),

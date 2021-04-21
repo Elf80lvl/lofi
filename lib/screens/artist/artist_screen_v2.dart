@@ -9,6 +9,23 @@ import 'package:lofi/components/album.dart';
 import 'package:lofi/components/undo/popUpMenuOfSong.dart';
 
 bool isLikedButtonPressed = false;
+var title = 'First Aid Kit';
+
+// * Проверка названия группы, если слишком длинное вызываем splitStringByLength
+String checkTitleLengthAndGetTitle() {
+  if (title.length > 15) {
+    return splitStringByLength(title, 15);
+  } else
+    return title;
+}
+
+// * Разрывает строку (str) на 2 строки в точке отсчитывания количества символов (length) от начала строки, возвращает первую строку и "..."
+String splitStringByLength(String str, int length) {
+  List<String> data = [];
+  data.add(str.substring(0, length));
+  data.add(str.substring(length));
+  return data[0] + '...';
+}
 
 class ArtistScreen2 extends StatefulWidget {
   @override
@@ -30,43 +47,48 @@ class _ArtistScreen2State extends State<ArtistScreen2> {
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                'First Aid Kit',
+                checkTitleLengthAndGetTitle(),
+                maxLines: 1,
+                overflow: TextOverflow.fade,
                 style: TextStyle(
                   fontWeight: FontWeight.w900,
                 ),
               ),
               centerTitle: true,
-              background: Stack(children: [
-                // * ARTIST IMAGE
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: Image.asset(
-                    'assets/image/artists/fak.jpg',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-
-                // * GRADIENT
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.width,
-                  //color: Colors.white,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      stops: [
-                        0.2,
-                        0.85,
-                      ],
-                      colors: [
-                        Colors.transparent,
-                        kBgColor,
-                      ],
+              background: Stack(
+                children: [
+                  // * ARTIST IMAGE
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Image.asset(
+                      'assets/image/artists/fak.jpg',
+                      fit: BoxFit.cover,
                     ),
                   ),
-                ),
-              ]),
+
+                  // TODO: make transition smoother
+                  // * GRADIENT
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.width,
+                    //color: Colors.white,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        stops: [
+                          0,
+                          0.9,
+                        ],
+                        colors: [
+                          Colors.transparent,
+                          kBgColor,
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

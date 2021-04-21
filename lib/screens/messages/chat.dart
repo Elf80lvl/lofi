@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lofi/components/my_icon_button_with_bg.dart';
 import 'package:lofi/constants.dart';
 import 'package:lofi/screens/messages/message.dart';
 
@@ -23,11 +24,12 @@ class Chat extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  GestureDetector(
+                  MyIconButtonWithBG(
                     onTap: () {
                       Navigator.pop(context);
                     },
-                    child: Icon(Icons.chevron_left_rounded),
+                    icon: Icons.chevron_left_rounded,
+                    iconColor: kMainWhite,
                   ),
                   Container(
                     child: Row(
@@ -73,8 +75,9 @@ class Chat extends StatelessWidget {
             ),
             Flexible(
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                ),
                 child: ListView(
                   children: [
                     Message(
