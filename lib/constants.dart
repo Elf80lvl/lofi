@@ -1,3 +1,4 @@
+import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -33,6 +34,12 @@ var kTextFieldInputDecorationLoginScreen = InputDecoration(
       Radius.circular(50),
     ),
   ),
+);
+
+var myInputDecorationForLogin = InputDecoration(
+  hintText: 'Username',
+  hintStyle: TextStyle(color: kSecondaryColor),
+  prefixIcon: Icon(CommunityMaterialIcons.account, color: kSecondaryColor),
 );
 
 const kBorderRadiusDefault = 10.0;

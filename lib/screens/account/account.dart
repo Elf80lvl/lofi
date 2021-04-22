@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:lofi/constants.dart';
 import 'package:lofi/components/menu_el.dart';
+import 'package:lofi/screens/login/signup_screen.dart';
+import 'package:lofi/services/auth.dart';
 
-class Account extends StatelessWidget {
+class Account extends StatefulWidget {
+  @override
+  _AccountState createState() => _AccountState();
+}
+
+class _AccountState extends State<Account> {
+  AuthMethods authMethods = AuthMethods();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -71,6 +80,12 @@ class Account extends StatelessWidget {
                   MenuElementAccount(
                     iconURL: 'assets/icons/helpAndFeedback.svg',
                     name: 'Help And Feedback',
+                    onTap: () {},
+                  ),
+                  //TODO: change icon
+                  MenuElementAccount(
+                    iconURL: 'assets/icons/helpAndFeedback.svg',
+                    name: 'Sign Out',
                     onTap: () {},
                   ),
                 ],

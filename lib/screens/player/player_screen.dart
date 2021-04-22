@@ -129,32 +129,36 @@ class _PlayerScreenState extends State<PlayerScreen> {
                     ),
                   ),
 
+                  // * название, таймлайн, кнопки управления
                   Column(
-                    // * название, таймлайн, кнопки управления
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8),
-                        child: Column(
-                          // * Song And Artist name
-                          children: [
-                            Text(
-                              widget.songName,
-                              style: TextStyle(
-                                  color: kMainWhite,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              widget.artistName,
-                              style: TextStyle(
-                                  color: kSecondaryColor,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ],
+
+                        // * Song And Artist name
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          child: Column(
+                            children: [
+                              Text(
+                                widget.songName,
+                                style: TextStyle(
+                                    color: kMainWhite,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                widget.artistName,
+                                style: TextStyle(
+                                    color: kSecondaryColor,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
 

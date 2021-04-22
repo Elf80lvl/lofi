@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:lofi/constants.dart';
 
-class ButtonWhite extends StatelessWidget {
-  const ButtonWhite({
-    Key key,
-    this.text,
-    this.onTap,
-  }) : super(key: key);
+class ButtonBig extends StatelessWidget {
+  ButtonBig({this.text, this.onTap, this.color, this.bgColor});
 
   final String text;
   final Function onTap;
+  final Color color;
+  final Color bgColor;
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +19,8 @@ class ButtonWhite extends StatelessWidget {
       ),
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-        primary: kMainWhite,
-        onPrimary: kBgColor,
+        primary: color != null ? color : kThemeColor,
+        onPrimary: bgColor != null ? kBgColor : kMainWhite,
         minimumSize: Size(double.infinity, 60),
       ),
     );

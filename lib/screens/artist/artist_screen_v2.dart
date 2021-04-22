@@ -44,16 +44,16 @@ class _ArtistScreen2State extends State<ArtistScreen2> {
             pinned: true,
             floating: false,
             backgroundColor: kBgColor,
-            expandedHeight: 300,
+            expandedHeight: 250,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text(
-                checkTitleLengthAndGetTitle(),
-                maxLines: 1,
-                overflow: TextOverflow.fade,
-                style: TextStyle(
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
+              // title: Text(
+              //   checkTitleLengthAndGetTitle(),
+              //   maxLines: 1,
+              //   overflow: TextOverflow.fade,
+              //   style: TextStyle(
+              //     fontWeight: FontWeight.w900,
+              //   ),
+              // ),
               centerTitle: true,
               background: Stack(
                 children: [
@@ -66,7 +66,6 @@ class _ArtistScreen2State extends State<ArtistScreen2> {
                     ),
                   ),
 
-                  // TODO: make transition smoother
                   // * GRADIENT
                   Container(
                     width: MediaQuery.of(context).size.width,
@@ -84,6 +83,21 @@ class _ArtistScreen2State extends State<ArtistScreen2> {
                           Colors.transparent,
                           kBgColor,
                         ],
+                      ),
+                    ),
+                  ),
+                  Positioned.fill(
+                    bottom: -190,
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        title,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            color: kMainWhite,
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
@@ -159,9 +173,9 @@ class _ArtistScreen2State extends State<ArtistScreen2> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
-                height: 8,
-              ),
+              // SizedBox(
+              //   height: 8,
+              // ),
 
               // * -RADIO PLAY SHUFFLE Buttons-
               SingleChildScrollView(

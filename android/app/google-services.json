@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "606370129268",
+    "project_id": "lofi-b159a",
+    "storage_bucket": "lofi-b159a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606370129268:android:c8b9d66461b44a61dd3821",
+        "android_client_info": {
+          "package_name": "com.vielynmogra.lofi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606370129268-kit22nj347hi17pqrbu9v1guuivmvf9o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMwxKfms0dQRSAFMzeDeV3F0KQj68GqoM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "606370129268-kit22nj347hi17pqrbu9v1guuivmvf9o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
