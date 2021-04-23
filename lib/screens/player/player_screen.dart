@@ -1,16 +1,12 @@
 import 'dart:ui';
 
-import 'package:badges/badges.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:lofi/components/menu_tile.dart';
 import 'package:lofi/components/myPopUpMenuButton.dart';
 import 'package:lofi/components/my_icon_button_with_bg.dart';
 import 'package:lofi/constants.dart';
 import 'package:lofi/screens/artist/artist_screen_v2.dart';
 import 'package:lofi/screens/playlist/playlist_screen.dart';
-import 'package:lofi/components/undo/popUpMenuOfSong.dart';
 import 'package:lofi/screens/player/roundSliderTrackShape.dart';
 
 bool isFavButtonActive = false;

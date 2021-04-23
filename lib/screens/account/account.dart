@@ -1,7 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:lofi/constants.dart';
 import 'package:lofi/components/menu_el.dart';
-import 'package:lofi/screens/login/signup_screen.dart';
+import 'package:lofi/helper/authenticate.dart';
 import 'package:lofi/services/auth.dart';
 
 class Account extends StatefulWidget {
@@ -15,7 +17,7 @@ class _AccountState extends State<Account> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
+      physics: Platform.isIOS ? BouncingScrollPhysics() : ScrollPhysics(),
       child: SafeArea(
         child: Column(
           children: [
@@ -82,11 +84,25 @@ class _AccountState extends State<Account> {
                     name: 'Help And Feedback',
                     onTap: () {},
                   ),
+
                   //TODO: change icon
-                  MenuElementAccount(
-                    iconURL: 'assets/icons/helpAndFeedback.svg',
-                    name: 'Sign Out',
-                    onTap: () {},
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: GestureDetector(
+                      onTap: () {
+                        print('SIGN OUT tapped');
+                        authMethods.signOut();
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Authenticate()));
+                      },
+                      child: Text(
+                        'Sign Out',
+                        style: TextStyle(
+                            color: Colors.red, fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                 ],
               ),

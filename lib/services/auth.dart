@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lofi/modal/my_user.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -8,7 +7,7 @@ class AuthMethods {
     return user != null ? MyUser(userId: user.uid) : null;
   }
 
-//changes:
+// * changes from video:
 //FirebaseUser = User
 //AuthResult = UserCredential
 //User = MyUser

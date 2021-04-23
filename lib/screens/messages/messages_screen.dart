@@ -1,13 +1,64 @@
 import 'dart:io' show Platform; //для определения ОС устройства (Platform.isIos)
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lofi/constants.dart';
 import 'package:badges/badges.dart';
 import 'package:lofi/screens/messages/chat.dart';
 import 'package:lofi/screens/messages/msgData.dart';
+import 'package:lofi/services/database.dart';
 import 'msgData.dart';
 
-class Messages extends StatelessWidget {
+class Messages extends StatefulWidget {
+  @override
+  _MessagesState createState() => _MessagesState();
+}
+
+class _MessagesState extends State<Messages> {
+  TextEditingController messagesScreenTextEditingController =
+      TextEditingController();
+  DatabaseMethods databaseMethods = DatabaseMethods();
+
+  QuerySnapshot searchSnapshot;
+
+  initiateSearch() {
+    databaseMethods
+        .getUserByUsername(messagesScreenTextEditingController.text)
+        .then((val) {
+      setState(() {
+        print(val.toString());
+        searchSnapshot = val;
+      });
+    });
+  }
+
+  Widget searchList() {
+    print('object');
+    return searchSnapshot != null
+        ? ListView.builder(
+            itemCount: searchSnapshot.docs.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              // return Container(
+              //   child: Text(searchSnapshot.docs[index].data()['name']),
+              // );
+              return ChatRow(
+                name: searchSnapshot.docs[index].data()['name'],
+                isOnline: false,
+                imgURL: 'assets/image/chatAvatars',
+                msgPreview: '',
+                msgCount: 0,
+                time: 'N/A',
+              );
+            })
+        : Container();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -19,45 +70,53 @@ class Messages extends StatelessWidget {
             width: double.infinity,
             color: kBottomMenuBG,
             child: Center(
+              // * Поиск юзера
               child: TextField(
+                autocorrect: false,
+                keyboardType: TextInputType.visiblePassword,
+                controller: messagesScreenTextEditingController,
                 style: TextStyle(
                   color: kMainWhite,
                 ),
                 decoration: kTextFieldInputDecoration.copyWith(
                     hintText: 'Find people, conversation'),
-                onChanged: (value) {},
+                onChanged: (value) {
+                  initiateSearch();
+                },
               ),
             ),
           ),
           Expanded(
+            child: searchList(),
             // * data - массив с данными списка чата из msgData.dart
-            child: ListView.builder(
-              physics:
-                  Platform.isIOS ? BouncingScrollPhysics() : ScrollPhysics(),
-              itemCount: data.length,
-              itemBuilder: (_, index) => InkWell(
-                onTap: () {
-                  print('${data[index].name} was tapped');
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) {
-                      return Chat(
-                          name: data[index].name,
-                          avatarURL: data[index].imgURL,
-                          isOnline: data[index].isOnline);
-                    }),
-                  );
-                },
-                child: ChatRow(
-                  imgURL: data[index].imgURL,
-                  name: data[index].name,
-                  msgPreview: data[index].msgPreview,
-                  msgCount: data[index].msgCount,
-                  time: data[index].time,
-                  isOnline: data[index].isOnline,
-                ),
-              ),
-            ),
+            // child: ListView.builder(
+            //   physics:
+            //       Platform.isIOS ? BouncingScrollPhysics() : ScrollPhysics(),
+            //   itemCount: data.length,
+            //   itemBuilder: (_, index) => InkWell(
+            //     onTap: () {
+            //       print('${data[index].name} was tapped');
+            //       Navigator.push(
+            //         context,
+            //         MaterialPageRoute(builder: (context) {
+            //           return Chat(
+            //               name: data[index].name,
+            //               avatarURL: data[index].imgURL,
+            //               isOnline: data[index].isOnline);
+            //         }),
+            //       );
+            //     },
+            //     child: ChatRow(
+            //       imgURL: data[index].imgURL,
+            //       name: data[index].name,
+            //       msgPreview: data[index].msgPreview,
+            //       msgCount: data[index].msgCount,
+            //       time: data[index].time,
+            //       isOnline: data[index].isOnline,
+
+            //     ),
+            //   ),
+            // ),
           ),
         ],
       ),

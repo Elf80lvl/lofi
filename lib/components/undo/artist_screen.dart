@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lofi/constants.dart';
 import 'package:lofi/components/album.dart';
-import 'package:lofi/components/undo/popUpMenuOfSong.dart';
 
 class ArtistScreen extends StatelessWidget {
   @override

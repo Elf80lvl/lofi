@@ -1,12 +1,10 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:lofi/components/myPopUpMenuButton.dart';
 import 'package:lofi/components/my_icon_button_with_bg.dart';
 import 'package:lofi/components/song_tile.dart';
 import 'package:lofi/constants.dart';
 import 'package:lofi/components/album.dart';
-import 'package:lofi/components/undo/popUpMenuOfSong.dart';
 
 bool isLikedButtonPressed = false;
 var title = 'First Aid Kit';

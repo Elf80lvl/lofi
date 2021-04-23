@@ -1,10 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lofi/components/song_tile.dart';
 import 'package:lofi/constants.dart';
-import 'package:lofi/components/song_searched.dart';
 import 'package:lofi/components/tag.dart';
 import 'package:lofi/components/whats_playing_button.dart';
 

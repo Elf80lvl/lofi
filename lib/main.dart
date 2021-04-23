@@ -1,10 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lofi/constants.dart';
-import 'package:lofi/screens/artist/artist_screen_v2.dart';
-import 'package:lofi/screens/login/login_screen.dart';
-import 'package:lofi/screens/login/signup_screen.dart';
-import 'screens/main_screen.dart';
+import 'package:lofi/helper/authenticate.dart';
 
 // TODO: connect the firebase to ios if needed: https://youtu.be/FTju8w4zEno?t=2911
 // TODO: use a real android device for testing since AVD seems to be bugged when working with firebase
@@ -35,7 +32,7 @@ class MyApp extends StatelessWidget {
         bottomAppBarColor: kBgColor,
         scaffoldBackgroundColor: kBgColor,
       ),
-      home: SignUpScreen(),
+      home: Authenticate(),
     );
   }
 }

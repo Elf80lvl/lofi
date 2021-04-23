@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:lofi/components/my_icon_button_with_bg.dart';
 import 'package:lofi/constants.dart';
 import 'package:lofi/screens/messages/message.dart';

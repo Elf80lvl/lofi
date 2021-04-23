@@ -1,15 +1,12 @@
 import 'package:community_material_icon/community_material_icon.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lofi/constants.dart';
 import 'package:lofi/screens/login/components/button_big.dart';
 import 'package:lofi/screens/login/components/skip_button.dart';
-import 'package:lofi/screens/login/login_screen.dart';
 import 'package:lofi/screens/main_screen.dart';
 import 'package:lofi/services/auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:lofi/services/database.dart';
 
 class SignUpScreen extends StatefulWidget {
   final Function toggle;
@@ -23,6 +20,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool isLoading = false;
 
   AuthMethods authMethods = AuthMethods();
+  DatabaseMethods databaseMethods = DatabaseMethods();
 
   final formKey = GlobalKey<FormState>();
 
@@ -31,6 +29,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController passwordTextEditingController = TextEditingController();
 
   signMeUp() {
+    Map<String, String> userInfoMap = {
+      'name': userNameTextEditingController.text,
+      'email': emailTextEditingController.text,
+    };
+
     if (formKey.currentState.validate()) {
       setState(() {
         isLoading = true;
@@ -40,7 +43,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           .signUpWithEmailAndPassword(emailTextEditingController.text,
               passwordTextEditingController.text)
           .then((value) {
-        print('{$value.userId}');
+        databaseMethods.uploadUserInfo(userInfoMap);
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => MainScreen()));
       });
@@ -69,6 +72,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       SizedBox(
                         height: 48,
                       ),
+
                       // * main
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -172,36 +176,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               },
                             ),
 
-                            Padding(
-                              padding: EdgeInsets.only(top: 16),
-                              child: RichText(
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(text: 'Already have an account? '),
-                                    TextSpan(
-                                      text: 'Log in',
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Already have an account? ',
+                                  style: TextStyle(color: kMainWhite),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    widget.toggle();
+                                  },
+                                  child: Padding(
+                                    padding: EdgeInsets.only(
+                                        right: 8, left: 3, top: 16, bottom: 16),
+                                    child: Text(
+                                      'Log In',
                                       style: TextStyle(
                                           color: kThemeColor,
                                           decoration: TextDecoration.underline),
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          // Navigator.pushAndRemoveUntil(
-                                          //   context,
-                                          //   MaterialPageRoute(
-                                          //       builder: (context) =>
-                                          //           LoginScreen()),
-                                          //   (Route<dynamic> route) => false,
-                                          // );
-                                          widget.toggle();
-                                        },
                                     ),
-                                  ],
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
                           ],
                         ),
                       ),
+
                       SizedBox(
                         height: 48,
                       ),
