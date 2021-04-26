@@ -1,13 +1,10 @@
-import 'dart:io' show Platform; //для определения ОС устройства (Platform.isIos)
+//для определения ОС устройства (Platform.isIos)
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lofi/constants.dart';
 import 'package:badges/badges.dart';
-import 'package:lofi/screens/messages/chat.dart';
-import 'package:lofi/screens/messages/msgData.dart';
 import 'package:lofi/services/database.dart';
-import 'msgData.dart';
 
 class Messages extends StatefulWidget {
   @override
@@ -33,17 +30,14 @@ class _MessagesState extends State<Messages> {
   }
 
   Widget searchList() {
-    print('object');
     return searchSnapshot != null
         ? ListView.builder(
             itemCount: searchSnapshot.docs.length,
             shrinkWrap: true,
             itemBuilder: (context, index) {
-              // return Container(
-              //   child: Text(searchSnapshot.docs[index].data()['name']),
-              // );
               return ChatRow(
                 name: searchSnapshot.docs[index].data()['name'],
+                //name: searchSnapshot.docs[index].data()[getSuggestion('name')],
                 isOnline: false,
                 imgURL: 'assets/image/chatAvatars',
                 msgPreview: '',
@@ -53,6 +47,17 @@ class _MessagesState extends State<Messages> {
             })
         : Container();
   }
+
+  // Future<List<DocumentSnapshot>> getSuggestion(String suggestion) =>
+  //     FirebaseFirestore.instance
+  //         .collection('users')
+  //         .orderBy('')
+  //         .startAt([messagesScreenTextEditingController.text])
+  //         .endAt([messagesScreenTextEditingController.text + '\uf8ff'])
+  //         .get()
+  //         .then((snapshot) {
+  //           return snapshot.docs;
+  //         });
 
   @override
   void initState() {

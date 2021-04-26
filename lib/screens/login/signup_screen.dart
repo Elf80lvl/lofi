@@ -30,8 +30,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   signMeUp() {
     Map<String, String> userInfoMap = {
-      'name': userNameTextEditingController.text,
-      'email': emailTextEditingController.text,
+      'name': userNameTextEditingController
+          .text, // * this field is used to show the name in widget ChatRow()
+      'nameSearch': userNameTextEditingController
+          .text // * this field is used for searching
+          .toString()
+          .replaceAll(RegExp(r"\s+"), "")
+          .toLowerCase(),
+      'email': emailTextEditingController.text, // * to store it in database
     };
 
     if (formKey.currentState.validate()) {
@@ -48,6 +54,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
             context, MaterialPageRoute(builder: (context) => MainScreen()));
       });
     }
+  }
+
+  signInAnon() {
+    authMethods.signInAnon().then((value) => Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => MainScreen())));
   }
 
   @override
@@ -208,7 +219,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: 48,
                       ),
 
-                      SkipButton(),
+                      // ToDo the delay between this screen and home screen is too long. Improve performance
+                      SkipButton(
+                        onPress: () {
+                          signInAnon();
+                        },
+                      ),
                     ],
                   ),
                 ),

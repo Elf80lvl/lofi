@@ -40,6 +40,11 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  signInAnon() {
+    authMethods.signInAnon().then((value) => Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => MainScreen())));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -170,7 +175,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 48,
                       ),
 
-                      SkipButton(),
+                      SkipButton(
+                        onPress: () {
+                          signInAnon();
+                        },
+                      ),
                     ],
                   ),
                 ),

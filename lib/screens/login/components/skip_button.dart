@@ -5,18 +5,15 @@ import 'package:lofi/screens/main_screen.dart';
 class SkipButton extends StatelessWidget {
   const SkipButton({
     Key key,
+    this.onPress,
   }) : super(key: key);
+
+  final Function onPress;
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => MainScreen()),
-          (Route<dynamic> route) => false,
-        );
-      },
+      onPressed: onPress,
       child: Text(
         'Skip',
         style: TextStyle(

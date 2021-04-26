@@ -46,4 +46,13 @@ class AuthMethods {
       return await _auth.signOut();
     } catch (e) {}
   }
+
+  Future signInAnon() async {
+    try {
+      return await _auth.signInAnonymously();
+    } catch (e) {
+      print('ERROR');
+      print(e.toString());
+    }
+  }
 }
