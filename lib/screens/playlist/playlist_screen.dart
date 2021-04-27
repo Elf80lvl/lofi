@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
 import 'package:lofi/components/myPopUpMenuButton.dart';
@@ -26,7 +26,9 @@ class PlaylistScreen extends StatelessWidget {
               onTap: () {
                 Navigator.pop(context);
               },
-              icon: Icons.chevron_left_rounded,
+              icon: Platform.isIOS
+                  ? Icons.arrow_back_ios_rounded
+                  : Icons.arrow_back_rounded,
               iconColor: kMainWhite,
             ),
 

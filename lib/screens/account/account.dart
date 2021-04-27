@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:lofi/constants.dart';
 import 'package:lofi/components/menu_el.dart';
@@ -27,9 +28,35 @@ class _AccountState extends State<Account> {
               color: kBottomMenuBG,
               child: Column(
                 children: [
-                  CircleAvatar(
-                    backgroundImage: AssetImage('assets/image/ava.jpg'),
-                    radius: 35,
+                  GestureDetector(
+                    onTap: () {
+                      // ToDo change avatar
+                    },
+                    child: Stack(
+                      children: [
+                        CircleAvatar(
+                          backgroundImage: AssetImage('assets/image/ava.jpg'),
+                          radius: 35,
+                        ),
+                        Positioned(
+                          top: 0,
+                          right: 0,
+                          child: Container(
+                            width: 32,
+                            height: 32,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: kBgColor.withOpacity(0.6),
+                            ),
+                            child: Icon(
+                              CommunityMaterialIcons.image_plus,
+                              size: 15,
+                              color: kMainWhite,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: 16,
@@ -49,7 +76,9 @@ class _AccountState extends State<Account> {
                       onPressed: () {},
                       child: Text(
                         'See stats',
-                        style: TextStyle(color: kThemeColor, fontSize: 12),
+                        style: TextStyle(
+                          color: kThemeColor,
+                        ),
                       )),
                 ],
               ),
@@ -85,7 +114,7 @@ class _AccountState extends State<Account> {
                     onTap: () {},
                   ),
 
-                  //TODO: change icon
+                  // * Sign out button
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     child: GestureDetector(
@@ -100,7 +129,10 @@ class _AccountState extends State<Account> {
                       child: Text(
                         'Sign Out',
                         style: TextStyle(
-                            color: Colors.red, fontWeight: FontWeight.bold),
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                          //fontSize: 18,
+                        ),
                       ),
                     ),
                   ),

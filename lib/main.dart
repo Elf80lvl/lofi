@@ -4,13 +4,16 @@ import 'package:lofi/constants.dart';
 import 'package:lofi/helper/authenticate.dart';
 
 // TODO: connect the firebase to ios if needed: https://youtu.be/FTju8w4zEno?t=2911
-// TODO: use a real android device for testing since AVD seems to be bugged when working with firebase
-// at the moment it is connected to android only
+//* use a real android device for testing since AVD seems to be bugged when working with firebase
+//* at the moment it is connected to android only
 
 // void main() {
 //   runApp(MyApp());
 // }
 
+//* WidgetsFlutterBinding.ensureInitialized();
+//* await Firebase.initializeApp();
+//* все это нужно для работы Firebase
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

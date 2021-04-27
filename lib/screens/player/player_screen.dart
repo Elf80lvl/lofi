@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'dart:io' show Platform;
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:lofi/components/myPopUpMenuButton.dart';
@@ -11,6 +11,8 @@ import 'package:lofi/screens/player/roundSliderTrackShape.dart';
 
 bool isFavButtonActive = false;
 bool isRepeatButtonActive = false;
+bool isShuffleButtonActive = false;
+bool isDislikeButtonActive = false;
 var _songCurrentTime = 0.0;
 var _songFullTime = 5.24;
 
@@ -38,7 +40,9 @@ class _PlayerScreenState extends State<PlayerScreen> {
               onTap: () {
                 Navigator.pop(context);
               },
-              icon: Icons.chevron_left_rounded,
+              icon: Platform.isIOS
+                  ? Icons.arrow_back_ios_rounded
+                  : Icons.arrow_back_rounded,
               iconColor: kMainWhite,
             ),
             MyPopUpMenuButton(),
@@ -225,19 +229,21 @@ class _PlayerScreenState extends State<PlayerScreen> {
                           GestureDetector(
                             onTap: () {
                               setState(() {
-                                isRepeatButtonActive == true
-                                    ? isRepeatButtonActive = false
-                                    : isRepeatButtonActive = true;
-                                print('repeat button is $isRepeatButtonActive');
+                                isShuffleButtonActive == true
+                                    ? isShuffleButtonActive = false
+                                    : isShuffleButtonActive = true;
+                                print(
+                                    'repeat button is $isShuffleButtonActive');
                               });
                             },
                             child: Icon(
-                              Icons.repeat,
-                              color: isRepeatButtonActive
+                              Icons.shuffle_rounded,
+                              color: isShuffleButtonActive
                                   ? kThemeColor
                                   : kSecondaryColor,
                             ),
                           ),
+
                           // * Previous Song Button
                           Icon(
                             Icons.skip_previous_rounded,
@@ -261,25 +267,20 @@ class _PlayerScreenState extends State<PlayerScreen> {
                             Icons.skip_next_rounded,
                             size: 45,
                           ),
-                          // SvgPicture.asset(
-                          //   'assets/icons/next.svg',
-                          //   width: 30,
-                          // ),
 
-                          // * Like Button
+                          // * Repeat Button
                           GestureDetector(
                             onTap: () {
                               setState(() {
-                                isFavButtonActive == false
-                                    ? isFavButtonActive = true
-                                    : isFavButtonActive = false;
+                                isRepeatButtonActive == true
+                                    ? isRepeatButtonActive = false
+                                    : isRepeatButtonActive = true;
+                                print('repeat button is $isRepeatButtonActive');
                               });
                             },
                             child: Icon(
-                              (isFavButtonActive == true)
-                                  ? Icons.favorite
-                                  : Icons.favorite_outline_rounded,
-                              color: (isFavButtonActive == true)
+                              Icons.repeat,
+                              color: isRepeatButtonActive
                                   ? kThemeColor
                                   : kSecondaryColor,
                             ),
@@ -289,10 +290,29 @@ class _PlayerScreenState extends State<PlayerScreen> {
                     ],
                   ),
 
-                  // * Playlist button
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      // * Dislike Button
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            isDislikeButtonActive == false
+                                ? isDislikeButtonActive = true
+                                : isDislikeButtonActive = false;
+                          });
+                        },
+                        child: Icon(
+                          (isDislikeButtonActive == true)
+                              ? CommunityMaterialIcons.minus_circle
+                              : CommunityMaterialIcons.minus_circle_outline,
+                          color: (isDislikeButtonActive == true)
+                              ? kThemeColor
+                              : kSecondaryColor,
+                        ),
+                      ),
+
+                      // * Playlist button
                       MyIconTextButton(
                         text: 'Playlist',
                         icon: CommunityMaterialIcons.playlist_music,
@@ -306,6 +326,25 @@ class _PlayerScreenState extends State<PlayerScreen> {
                                         albumName: widget.albumName,
                                       )));
                         },
+                      ),
+
+                      // * Like Button
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            isFavButtonActive == false
+                                ? isFavButtonActive = true
+                                : isFavButtonActive = false;
+                          });
+                        },
+                        child: Icon(
+                          (isFavButtonActive == true)
+                              ? Icons.favorite
+                              : Icons.favorite_outline_rounded,
+                          color: (isFavButtonActive == true)
+                              ? kThemeColor
+                              : kSecondaryColor,
+                        ),
                       ),
                     ],
                   ),

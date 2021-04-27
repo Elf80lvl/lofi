@@ -131,11 +131,30 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
 
-                            SizedBox(
-                              height: 22,
+                            // SizedBox(
+                            //   height: 22,
+                            // ),
+
+                            // * Forgot password
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Forgot password?',
+                                  style: TextStyle(color: kMainWhite),
+                                ),
+                                TextButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Reset',
+                                    style: TextStyle(
+                                        decoration: TextDecoration.underline),
+                                  ),
+                                ),
+                              ],
                             ),
 
-                            // * Sign Up button
+                            // * Sign In button
                             ButtonBig(
                               text: 'Log In',
                               onTap: () {
@@ -143,26 +162,22 @@ class _LoginScreenState extends State<LoginScreen> {
                               },
                             ),
 
+                            // * toggle screens
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Don\'t have an account? ',
+                                  'Don\'t have an account?',
                                   style: TextStyle(color: kMainWhite),
                                 ),
-                                GestureDetector(
-                                  onTap: () {
+                                TextButton(
+                                  onPressed: () {
                                     widget.toggle();
                                   },
-                                  child: Padding(
-                                    padding: EdgeInsets.only(
-                                        right: 8, left: 3, top: 16, bottom: 16),
-                                    child: Text(
-                                      'Create',
-                                      style: TextStyle(
-                                          color: kThemeColor,
-                                          decoration: TextDecoration.underline),
-                                    ),
+                                  child: Text(
+                                    'Create',
+                                    style: TextStyle(
+                                        decoration: TextDecoration.underline),
                                   ),
                                 ),
                               ],

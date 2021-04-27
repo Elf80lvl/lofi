@@ -42,7 +42,7 @@ class Album extends StatelessWidget {
                   top: 0,
                   right: 16,
                   child: MyPopUpMenuButton(
-                    bgColor: kBgColor.withOpacity(0.5),
+                    bgColor: kBgColor.withOpacity(0.6),
                     //color: kBgColor,
                   )),
               // Positioned(

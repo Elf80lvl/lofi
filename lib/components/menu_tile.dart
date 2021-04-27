@@ -22,7 +22,8 @@ class MenuTile extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: Row(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize
+              .min, // * минимальная ширина строки исходя из контента чтобы PopupMenuButton занимал меньше места на экране
           children: [
             Container(
               width: 20,
@@ -42,7 +43,7 @@ class MenuTile extends StatelessWidget {
             Text(
               text,
               style: TextStyle(
-                  color: kMainWhite, fontSize: 16, fontWeight: FontWeight.w500),
+                  color: kMainWhite, fontSize: 16, fontWeight: FontWeight.w400),
             ),
           ],
         ),

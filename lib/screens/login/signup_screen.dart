@@ -187,6 +187,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               },
                             ),
 
+                            // * toggle screens
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -194,19 +195,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   'Already have an account? ',
                                   style: TextStyle(color: kMainWhite),
                                 ),
-                                GestureDetector(
-                                  onTap: () {
+                                TextButton(
+                                  onPressed: () {
                                     widget.toggle();
                                   },
-                                  child: Padding(
-                                    padding: EdgeInsets.only(
-                                        right: 8, left: 3, top: 16, bottom: 16),
-                                    child: Text(
-                                      'Log In',
-                                      style: TextStyle(
-                                          color: kThemeColor,
-                                          decoration: TextDecoration.underline),
-                                    ),
+                                  child: Text(
+                                    'Log In',
+                                    style: TextStyle(
+                                        decoration: TextDecoration.underline),
                                   ),
                                 ),
                               ],

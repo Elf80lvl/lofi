@@ -1,5 +1,7 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
+import 'dart:io' show Platform;
+
 import 'package:lofi/components/myPopUpMenuButton.dart';
 import 'package:lofi/components/my_icon_button_with_bg.dart';
 import 'package:lofi/components/song_tile.dart';
@@ -17,6 +19,7 @@ String checkTitleLengthAndGetTitle() {
     return title;
 }
 
+// * Укорачивает название группы
 // * Разрывает строку (str) на 2 строки в точке отсчитывания количества символов (length) от начала строки, возвращает первую строку и "..."
 String splitStringByLength(String str, int length) {
   List<String> data = [];
@@ -109,9 +112,11 @@ class _ArtistScreen2State extends State<ArtistScreen2> {
                   children: [
                     // * -BACK BUTTON-
                     MyIconButtonWithBG(
-                      icon: Icons.chevron_left_rounded,
-                      width: 30,
-                      height: 30,
+                      icon: Platform.isIOS
+                          ? Icons.arrow_back_ios_rounded
+                          : Icons.arrow_back_rounded,
+                      width: 32,
+                      height: 32,
                       bgColor: kBgColor,
                       iconColor: kMainWhite,
                       onTap: () {
@@ -124,7 +129,6 @@ class _ArtistScreen2State extends State<ArtistScreen2> {
                 Row(
                   children: [
                     // * -LIKE BUTTON-
-
                     GestureDetector(
                       onTap: () {
                         setState(() {
@@ -136,13 +140,13 @@ class _ArtistScreen2State extends State<ArtistScreen2> {
                       },
                       child: MyIconButtonWithBG(
                         icon: Icons.favorite,
-                        width: 30,
-                        height: 30,
+                        width: 32,
+                        height: 32,
                         bgColor: kBgColor,
                         iconColor: (isLikedButtonPressed == false)
                             ? kMainWhite
                             : kThemeColor,
-                        iconSize: 18,
+                        iconSize: 20,
                       ),
                     ),
                     // * END OF -LIKE BUTTON-
@@ -153,8 +157,8 @@ class _ArtistScreen2State extends State<ArtistScreen2> {
 
                     // * -MORE BUTTON-
                     MyPopUpMenuButton(
-                      color: kMainWhite,
-                    ),
+                        //color: kMainWhite,
+                        ),
                     // * END OF -MORE BUTTON-
                   ],
                 ),
@@ -169,6 +173,7 @@ class _ArtistScreen2State extends State<ArtistScreen2> {
 
   Widget buildBody() => SliverToBoxAdapter(
         child: SingleChildScrollView(
+          physics: Platform.isIOS ? BouncingScrollPhysics() : ScrollPhysics(),
           child: Column(
             children: [
               // SizedBox(

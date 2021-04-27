@@ -9,10 +9,13 @@ class MyPopUpMenuButton extends StatelessWidget {
     Key key,
     this.color,
     this.bgColor,
+    this.size,
   }) : super(key: key);
 
   final Color color;
   final Color bgColor;
+  final double size;
+  //final double width, height;
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +30,15 @@ class MyPopUpMenuButton extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(20.0))),
       color: kBottomMenuBG,
       icon: Container(
-        width: 30,
-        height: 30,
+        width: 32,
+        height: 32,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: bgColor != null ? bgColor : kBgColor,
         ),
         child: Icon(
           Icons.more_horiz_rounded,
+          size: size != null ? size : 26,
           color: color != null ? color : kMainWhite,
         ),
       ),
@@ -44,7 +48,7 @@ class MyPopUpMenuButton extends StatelessWidget {
           child: MenuTile(
             text: 'Like',
             icon: Icons.favorite,
-            size: 16,
+            size: 18,
             onTap: () {
               print('like pressed');
             },

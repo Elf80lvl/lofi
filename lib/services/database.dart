@@ -8,6 +8,10 @@ class DatabaseMethods {
         .get();
   }
 
+  getAllUsers() async {
+    return await FirebaseFirestore.instance.collection('users').get();
+  }
+
 // * загрузка юзера в firestore database
   uploadUserInfo(userMap) {
     FirebaseFirestore.instance.collection('users').add(userMap).catchError((e) {

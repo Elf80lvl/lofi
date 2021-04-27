@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// * круглая иконка с кастомными цветами и размерами фона и иконки.
 class MyIconButtonWithBG extends StatelessWidget {
   MyIconButtonWithBG(
       {this.width,
@@ -21,8 +22,8 @@ class MyIconButtonWithBG extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: width,
-        height: height,
+        width: width != null ? width : 32,
+        height: height != null ? height : 32,
         decoration: BoxDecoration(shape: BoxShape.circle, color: bgColor),
         child: Icon(
           icon,
